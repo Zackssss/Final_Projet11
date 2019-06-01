@@ -1,6 +1,6 @@
 package view;
 
-import entity.MapTile;
+import contract.*;
 
 import java.awt.*;
 import java.sql.SQLException;
@@ -16,24 +16,16 @@ import javax.swing.JPanel;
 
 import static java.lang.Thread.sleep;
 
-/**
- * The Class ViewPanel.
- *
- * @author Jean-Aymeric Diet
- */
 class ViewPanel extends JPanel implements Observer {
 
-	/**
-	 * The view frame.
+	/* The view frame.
 	 */
 	private ViewFrame viewFrame;
-	/**
-	 * The Constant serialVersionUID.
+	/* The Constant serialVersionUID.
 	 */
 	private static final long serialVersionUID = -998294702363713521L;
 
-	/**
-	 * Instantiates a new view panel.
+	/* Instantiates a new view panel.
 	 *
 	 * @param viewFrame the view frame
 	 */
@@ -47,15 +39,6 @@ class ViewPanel extends JPanel implements Observer {
 	 *
 	 * @return the view frame
 	 */
-	private ViewFrame getViewFrame() {
-		return this.viewFrame;
-	}
-
-	/**
-	 * Sets the view frame.
-	 *
-	 * @param viewFrame the new view frame
-	 */
 	private void setViewFrame(final ViewFrame viewFrame) {
 		this.viewFrame = viewFrame;
 	}
@@ -68,7 +51,6 @@ class ViewPanel extends JPanel implements Observer {
 	public void update(final Observable arg0, final Object arg1) {
 		this.repaint();
 	}
-
 	/*
 	 * (non-Javadoc)
 	 *
@@ -78,38 +60,38 @@ class ViewPanel extends JPanel implements Observer {
 	protected void paintComponent(final Graphics graphics) {
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
 
-		ArrayList<MapTile> DrawMap = this.getViewFrame().getModel().getMap();
+		ArrayList<entity.Tileset> DrawMap = this.getViewFrame().getModel().getMap();
 		BufferedImage imageTemp = null;
 
 		try {
-			imageTemp = ImageIO.read(new File("C:\\Users\\mrsyl\\Desktop\\JPU-BlankProject-public\\sprites" + "\\" + "background.png"));
+			imageTemp = ImageIO.read(new File("C:\\Users\\HUGO\\Desktop\\Final_Projet11\\sprites\\" + "background.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		for(int i=0; i<1; i++){
-				graphics.drawImage(imageTemp, 0, 0, 2112, 1056, null);
-		}
+		graphics.drawImage(imageTemp, 0, 0, 1408, 704, null);
 
 
 		for (int i = 0; i < DrawMap.size(); i++) {
 
 			try {
-				if (DrawMap.get(i).getName().equals("Empty")) {
-				} else if (DrawMap.get(i).getName().equals("Player") || DrawMap.get(i).getName().equals("Enemy")) {
-					imageTemp = ImageIO.read(new File("C:\\Users\\mrsyl\\Desktop\\JPU-BlankProject-public\\sprites" + "\\" + DrawMap.get(i).getName() + ".png"));
+				if (DrawMap.get(i).getFactory().equals("nothing")) {
+					imageTemp = null;
+				} else if (DrawMap.get(i).getFactory().equals("player") || DrawMap.get(i).getFactory().equals("monster")) {
+					imageTemp = ImageIO.read(new File("C:\\Users\\HUGO\\Desktop\\Final_Projet11\\sprites\\" + DrawMap.get(i).getFactory() + ".png"));
 				} else {
-					imageTemp = ImageIO.read(new File("C:\\Users\\mrsyl\\Desktop\\JPU-BlankProject-public\\sprites" + "\\" + DrawMap.get(i).getName() + ".png"));
+					imageTemp = ImageIO.read(new File("C:\\Users\\HUGO\\Desktop\\Final_Projet11\\sprites\\" + DrawMap.get(i).getFactory() + ".png"));
 				}
 
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			graphics.drawImage(imageTemp, DrawMap.get(i).getX() * 3, DrawMap.get(i).getY() * 3, 48, 48, null);
+			graphics.drawImage(imageTemp, DrawMap.get(i).getX() * 32, DrawMap.get(i).getY() * 32, 32, 32, null);
 		}
 
-			this.repaint();
-
-		}
+		this.repaint();
 
 	}
-
+	private ViewFrame getViewFrame() {
+		return this.viewFrame;
+	}
+}

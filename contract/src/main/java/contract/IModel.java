@@ -16,7 +16,7 @@ public interface IModel{
 
     public int[] getSize()throws SQLException;
 
-    public ArrayList<contract.ITileset> getMap();
+    public ArrayList<entity.Tileset> getMap();
 
     public void setMap(int ID) throws SQLException;
 

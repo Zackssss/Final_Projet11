@@ -7,7 +7,6 @@ package main;
 import contract.*;
 import controller.Controller;
 import model.Model;
-import model.element.PlayerModel;
 import view.View;
 
 import java.io.IOException;
@@ -28,10 +27,9 @@ public abstract class Main {
      */
     public static void main(final String[] args) throws IOException, SQLException {
 
-        final PlayerModel playerModel= new PlayerModel();
         final Model model = new Model();
         final View view = new View(model);
-        final Controller controller = new Controller(playerModel , view);
+        final Controller controller = new Controller(view, model);
         view.setController(controller);
 
         controller .orderPerform(ControllerOrder.STAND);

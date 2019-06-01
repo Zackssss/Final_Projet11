@@ -3,12 +3,14 @@ package model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Observable;
+import contract.*;
+import entity.*;
 
 
 public final class Model extends Observable implements IModel{
 
 
-	private ArrayList<contract.ITileset> map;
+	private ArrayList<entity.Tileset> map;
 	private DAOMap DAO = new DAOMap(DBConnection.getInstance().getConnection());
 	private int ID = 1;
 
@@ -32,7 +34,7 @@ public final class Model extends Observable implements IModel{
 		return result;
 	}
 
-	public ArrayList<contract.ITileset> getMap() {
+	public ArrayList<entity.Tileset> getMap() {
 		return this.map;
 	}
 
