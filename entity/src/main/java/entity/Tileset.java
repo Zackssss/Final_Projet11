@@ -2,26 +2,21 @@ package entity;
 
 public class Tileset extends Entity{
 
-    private String factory;
+    private Factory factory;
     private int x;
     private int y;
 
 
-    public Tileset(final String factory, final int x, final int y) {
+    public Tileset(final Factory factory, final int x, final int y) {
         this.factory = factory;
         this.x = x;
         this.y = y;
 
     }
 
-    public String getFactory() {return this.factory;}
+    public Factory getFactory() {return this.factory;}
 
-    public void setFactory() {
-
-    }
-
-
-    public void setFactory(final String Factory) {
+    public void setFactory(final Factory factory) {
         this.factory = (factory);
     }
 

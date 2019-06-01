@@ -10,15 +10,17 @@ import java.util.Observable;
  */
 public interface IModel{
 
-    public void setID(int inte);
+    void move(ControllerOrder order);
 
-    public int getID();
+    void setID(int inte);
 
-    public int[] getSize()throws SQLException;
+    int getID();
 
-    public ArrayList<entity.Tileset> getMap();
+    int[] getSize()throws SQLException;
 
-    public void setMap(int ID) throws SQLException;
+    ArrayList<entity.Tileset> getMap();
+
+    void setMap(int ID) throws SQLException;
 
     Observable getObservable();
 }

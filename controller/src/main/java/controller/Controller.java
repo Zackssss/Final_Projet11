@@ -28,29 +28,9 @@ public final class Controller implements IController {
 	}
 
 	public void orderPerform(final IUserOrder userOrder){
-		if (userOrder != null){
 
-			Direction direction;
-			switch (userOrder.getOrder()){
-				case UP:
-					direction = Direction.UP;
-					break;
-				case RIGHT:
-					direction = Direction.RIGHT;
-					break;
-				case DOWN:
-					direction = Direction.DOWN;
-					break;
-				case LEFT:
-					direction = Direction.LEFT;
-					break;
-				default:
-					direction = Direction.STAND;
-					break;
-
-			}
 		}
-	}
+
 	public void play() {
 		this.gameLoop();
 		this.viewSystem.printMessage("Game Over !");
@@ -76,7 +56,7 @@ public final class Controller implements IController {
 		return this.model;
 	}
 
-	private void setModel(final IModel playerModel){
+	private void setModel(final IModel model){
 		this.model = model;
 	}
 
@@ -103,18 +83,15 @@ public final class Controller implements IController {
 	}
 
 
-	public void control() {
-	}
-
 
 
 	@Override
 	public void orderPerform(ControllerOrder controllerOrder) {
-
-	}
-
-
-	public void orderPerform() {
+		if (controllerOrder != null){
+			System.out.println("order 1");
+			this.getModel().move(controllerOrder);
+			System.out.println("ordre 2");
+		}
 	}
 
 

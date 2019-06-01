@@ -130,6 +130,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	@Override
 	public void keyPressed(final KeyEvent e) {
 		this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
+		System.out.println("touche vue");
 	}
 
 
