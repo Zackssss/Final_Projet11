@@ -57,6 +57,10 @@ public final class View implements IView, Runnable {
 		this.viewFrame.printMessage(message);
 	}
 
+	public void closeAll() {
+
+	}
+
 	/*
 	 * (non-Javadoc)
 	 *

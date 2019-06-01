@@ -1,6 +1,6 @@
 package view;
 
-import entity.MapTile;
+import entity.Tileset;
 
 import java.awt.*;
 import java.sql.SQLException;
@@ -78,11 +78,11 @@ class ViewPanel extends JPanel implements Observer {
 	protected void paintComponent(final Graphics graphics) {
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
 
-		ArrayList<MapTile> DrawMap = this.getViewFrame().getModel().getMap();
+		ArrayList<Tileset> DrawMap = this.getViewFrame().getModel().getMap();
 		BufferedImage imageTemp = null;
 
 		try {
-			imageTemp = ImageIO.read(new File("C:\\Users\\mrsyl\\Desktop\\JPU-BlankProject-public\\sprites" + "\\" + "background.png"));
+			imageTemp = ImageIO.read(new File("C:\\Users\\zacbo\\Documents\\JAVA\\Remake Projet Java\\sprites" + "\\" + "background.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -94,11 +94,11 @@ class ViewPanel extends JPanel implements Observer {
 		for (int i = 0; i < DrawMap.size(); i++) {
 
 			try {
-				if (DrawMap.get(i).getName().equals("Empty")) {
-				} else if (DrawMap.get(i).getName().equals("Player") || DrawMap.get(i).getName().equals("Enemy")) {
-					imageTemp = ImageIO.read(new File("C:\\Users\\mrsyl\\Desktop\\JPU-BlankProject-public\\sprites" + "\\" + DrawMap.get(i).getName() + ".png"));
+				if (DrawMap.get(i).getFactory().equals("Empty")) {
+				} else if (DrawMap.get(i).getFactory().equals("Player") || DrawMap.get(i).getFactory().equals("Enemy")) {
+					imageTemp = ImageIO.read(new File("C:\\Users\\zacbo\\Documents\\JAVA\\Remake Projet Java\\sprites\\" + DrawMap.get(i).getFactory() + ".png"));
 				} else {
-					imageTemp = ImageIO.read(new File("C:\\Users\\mrsyl\\Desktop\\JPU-BlankProject-public\\sprites" + "\\" + DrawMap.get(i).getName() + ".png"));
+					imageTemp = ImageIO.read(new File("C:\\Users\\zacbo\\Documents\\JAVA\\Remake Projet Java\\sprites\\" + DrawMap.get(i).getFactory() + ".png"));
 				}
 
 			} catch (IOException e) {

@@ -15,14 +15,6 @@ class DAOMap{
 
 	private Connection connection;
 
-	/**
-	 * Instantiates a new DAO hello world.
-	 *
-	 * @param connection
-	 *          the connection
-	 * @throws SQLException
-	 *           the SQL exception
-	 */
 	public DAOMap(final Connection connection) throws SQLException {
 		this.connection = connection;
 	}

@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public final class Controller implements IController {
 
 	private boolean isGameOver  = false;
-	private IPlayerModel playerModel;
 	private IView viewSystem;
 	private static int TIME_SLEEP = 30;
 	private Order stackOrder;
@@ -22,38 +21,33 @@ public final class Controller implements IController {
 
 
 
-	public Controller(final IPlayerModel playerModel , final IView view){
+	public Controller(final IView view, final IModel model){
 		this.setView(view);
-		this.setPlayerModel(playerModel);
+		this.setModel(model);
 		this.clearStackOrder();
 	}
 
-
-    public void orderPerform(final IUserOrder userOrder){
+	public void orderPerform(final IUserOrder userOrder){
 		if (userOrder != null){
-			final IMobile player = this.playerModel.getMobileByPlayer(userOrder.getPlayer()); // ask Zack method's name IModel and player
-			if (player != null){
-				Direction direction;
-				switch (userOrder.getOrder()){
-					case UP:
-						direction = Direction.UP;
-						break;
-					case RIGHT:
-						direction = Direction.RIGHT;
-						break;
-					case DOWN:
-						direction = Direction.DOWN;
-						break;
-					case LEFT:
-						direction = Direction.LEFT;
-						break;
-					case STAND:
-					default:
-						direction = this.playerModel.getMobileByPlayer(userOrder.getPlayer()).getDirection(); // ask Zack method's name
-						break;
 
-				}
-				player.setDirection(direction); // ask Zack method's name
+			Direction direction;
+			switch (userOrder.getOrder()){
+				case UP:
+					direction = Direction.UP;
+					break;
+				case RIGHT:
+					direction = Direction.RIGHT;
+					break;
+				case DOWN:
+					direction = Direction.DOWN;
+					break;
+				case LEFT:
+					direction = Direction.LEFT;
+					break;
+				default:
+					direction = Direction.STAND;
+					break;
+
 			}
 		}
 	}
@@ -72,15 +66,7 @@ public final class Controller implements IController {
 			catch (final InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
-			final ArrayList<IMobile> initialMobiles = new ArrayList<>(this.playerModel.getMobiles());
-			for (final IMobile mobile : initialMobiles) {
-				mobile.move();
-			}
-			//IMobile ask Zack Mobile method
-			this.playerModel.setMobilesHavesMoved();
 		}
-
-
 	}
 
 	public void setViewSystem(final IView viewSystem) {
@@ -91,8 +77,8 @@ public final class Controller implements IController {
 		return this.model;
 	}
 
-	private void setPlayerModel(final IPlayerModel playerModel){
-		this.playerModel = playerModel;
+	private void setModel(final IModel playerModel){
+		this.model = model;
 	}
 
 	private IView getView(){
