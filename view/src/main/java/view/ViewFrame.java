@@ -5,13 +5,11 @@ import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
-import java.sql.SQLException;
+import contract.*;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 import contract.IController;
-import contract.IModel;
 
 
 class ViewFrame extends JFrame implements KeyListener {
@@ -120,19 +118,21 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.setResizable(false);
 		this.addKeyListener(this);
 		this.setContentPane(new ViewPanel(this));
-		this.setSize(1408 + this.getInsets().left + this.getInsets().right,  704+ this.getInsets().top + this.getInsets().bottom);
+		this.setSize(1402 + this.getInsets().left + this.getInsets().right,  730+ this.getInsets().top + this.getInsets().bottom);
 		this.setLocationRelativeTo(null);
 	}
 
-
+	@Override
 	public void keyTyped(KeyEvent e) {
 
 	}
 
-
-	public void keyPressed(KeyEvent e) {
+	@Override
+	public void keyPressed(final KeyEvent e) {
 		this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
 	}
+
+
 
 	public void keyReleased(final KeyEvent e) {
 

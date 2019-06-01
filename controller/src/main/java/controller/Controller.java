@@ -51,7 +51,6 @@ public final class Controller implements IController {
 			}
 		}
 	}
-
 	public void play() {
 		this.gameLoop();
 		this.viewSystem.printMessage("Game Over !");

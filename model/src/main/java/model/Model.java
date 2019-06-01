@@ -1,11 +1,10 @@
 package model;
 
-import contract.IModel;
-import entity.*;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Observable;
+import contract.*;
+import entity.*;
 
 
 public final class Model extends Observable implements IModel{
@@ -14,6 +13,9 @@ public final class Model extends Observable implements IModel{
 	private ArrayList<entity.Tileset> map;
 	private DAOMap DAO = new DAOMap(DBConnection.getInstance().getConnection());
 	private int ID = 1;
+	private Tileset getY;
+	private Tileset getX;
+	private Tileset getFactory;
 
 	/**
 	 * Instantiates a new model.
@@ -35,7 +37,7 @@ public final class Model extends Observable implements IModel{
 		return result;
 	}
 
-	public ArrayList<Tileset> getMap() {
+	public ArrayList<entity.Tileset> getMap() {
 		return this.map;
 	}
 
@@ -45,6 +47,21 @@ public final class Model extends Observable implements IModel{
 
 	public Observable getObservable() {
 		return this;
+	}
+
+	void moveUp() {
+		this.position.setY(this.position.getY() - 1);
+	}
+	void moveRight() {
+		this.position.setX(this.position.getX() + 1);
+	}
+
+	void moveDown() {
+		this.position.setY(this.position.getY() + 1);
+	}
+
+	void moveLeft() {
+		this.position.setX(this.position.getX() - 1);
 	}
 
 }
