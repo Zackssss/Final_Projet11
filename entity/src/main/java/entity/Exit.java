@@ -1,9 +1,9 @@
 package entity;
 
 
-class Exit extends Factory{
+public class Exit extends Factory{
 
-    public Exit(String name, boolean state, Permeability permeability){
-        super(name, state, Permeability.BLOCKING);
+    public Exit(String name, String state, Permeability permeability){
+        super(name, state, permeability);
     }
 }

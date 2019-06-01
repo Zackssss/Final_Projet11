@@ -1,8 +1,8 @@
 package entity;
 
-class Border extends Factory{
+public class Border extends Factory{
 
-        public Border(String name, boolean state, Permeability permeability){
-            super(name, state, Permeability.BLOCKING);
+        public Border(String name, String state, Permeability permeability){
+            super(name, state, permeability);
         }
 }

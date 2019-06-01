@@ -1,8 +1,8 @@
 package entity;
 
-class Ground extends Factory{
+public class Ground extends Factory{
 
-    public Ground(String name, boolean state, Permeability permeability){
-        super(name, state, Permeability.BLOCKING);
+    public Ground(String name, String state, Permeability permeability){
+        super(name, state, permeability);
     }
 }

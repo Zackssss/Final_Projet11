@@ -1,12 +1,14 @@
 package entity;
 
+import javax.swing.plaf.nimbus.State;
+
 public abstract class Factory {
 
     private String name;
-    private boolean state;
+    private String state;
     private Permeability permeability;
 
-    public Factory(final String name, final boolean state, final Permeability permeability) {
+    public Factory(final String name, final String state, final Permeability permeability) {
         this.setName(name);
         this.setState(state);
         this.setPermeability(permeability);
@@ -18,9 +20,9 @@ public abstract class Factory {
         this.name = (name);
     }
 
-    public boolean getState() {return this.state;}
+    public String getState() {return this.state;}
 
-    public void setState(final boolean state){
+    public void setState(final String state){
         this.state = (state);
     }
 

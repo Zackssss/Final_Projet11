@@ -22,7 +22,7 @@ public abstract class Main {
         final Controller controller = new Controller(view, model);
         view.setController(controller);
 
-        controller .orderPerform(ControllerOrder.STAND);
+        controller.orderPerform(ControllerOrder.STAND);
         controller.play();
 
     }

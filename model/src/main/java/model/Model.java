@@ -7,15 +7,16 @@ import contract.*;
 import entity.*;
 
 
-public final class Model extends Observable implements IModel{
+public final class Model extends Observable implements IModel {
 
 
 	private ArrayList<entity.Tileset> map;
-	private DAOMap DAO = new DAOMap(DBConnection.getInstance().getConnection());
-	private int ID = 1;
 	private Tileset getY;
 	private Tileset getX;
 	private Tileset getFactory;
+	private DAOMap DAO = new DAOMap(DBConnection.getInstance().getConnection());
+	private int ID = 1;
+
 
 	/**
 	 * Instantiates a new model.
@@ -49,19 +50,64 @@ public final class Model extends Observable implements IModel{
 		return this;
 	}
 
-	void moveUp() {
-		this.position.setY(this.position.getY() - 1);
-	}
-	void moveRight() {
-		this.position.setX(this.position.getX() + 1);
+	public void move(ControllerOrder order) {
+		int index = 0;
+		for (int i = 0; i < this.map.size(); i++) {
+			if (this.map.get(i).getFactory().getName().equals("player")) {
+				index = i;
+
+			}
+		}
+		switch (order) {
+			case UP:
+				System.out.println("UP");
+				System.out.println(this.map.get(index - 1).getFactory().getPermeability());
+				if (this.map.get(index - 1).getFactory().getPermeability() != Permeability.BLOCKING) {
+					this.map.get(index - 1).setFactory(this.map.get(index).getFactory());
+					this.map.get(index).setFactory(new Nothing("nothing", true, Permeability.PENETRABLE));
+					System.out.println("déplacement");
+				}
+				break;
+			case DOWN:
+				if (this.map.get(index + 1).getFactory().getPermeability() != Permeability.BLOCKING) {
+					this.map.get(index + 1).setFactory(this.map.get(index).getFactory());
+					this.map.get(index).setFactory(new Nothing("nothing", true, Permeability.PENETRABLE));
+				}
+				break;
+			case LEFT:
+				if (this.map.get(index - 22).getFactory().getPermeability() != Permeability.BLOCKING) {
+					this.map.get(index - 22).setFactory(this.map.get(index).getFactory());
+					this.map.get(index).setFactory(new Nothing("nothing", true, Permeability.PENETRABLE));
+				}
+				break;
+			case RIGHT:
+				if (this.map.get(index + 22).getFactory().getPermeability() != Permeability.BLOCKING) {
+					this.map.get(index + 22).setFactory(this.map.get(index).getFactory());
+					this.map.get(index).setFactory(new Nothing("nothing", true, Permeability.PENETRABLE));
+				}
+				break;
+			case STAND:
+				break;
+			default:
+				break;
+		}
 	}
 
-	void moveDown() {
-		this.position.setY(this.position.getY() + 1);
-	}
+	public void isNormal(){
 
-	void moveLeft() {
-		this.position.setX(this.position.getX() - 1);
-	}
 
+	}
+	public void isFalling() {
+		int index = 0;
+		for (int i = 0; i < this.map.size(); i++) {
+			if (this.map.get(i).getFactory().getName().equals("rock") || this.map.get(i).getFactory().getName().equals("diamond")) {
+				index = i;
+			}
+			if (this.map.get(index + 1).getFactory().getPermeability() == Permeability.PENETRABLE) {
+
+			}
+
+		}
+	}
 }
+
