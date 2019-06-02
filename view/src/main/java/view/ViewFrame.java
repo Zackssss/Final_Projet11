@@ -1,13 +1,12 @@
 package view;
 
-import java.awt.GraphicsConfiguration;
-import java.awt.HeadlessException;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
 import contract.*;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import contract.IController;
 
@@ -143,5 +142,6 @@ class ViewFrame extends JFrame implements KeyListener {
 	}
 
 	public void printMessage(String message) {
+		JOptionPane.showMessageDialog(null, message);
 	}
 }

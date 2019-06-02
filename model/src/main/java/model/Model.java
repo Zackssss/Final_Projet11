@@ -14,6 +14,7 @@ import entity.*;
 		private Tileset getY;
 		private Tileset getX;
 		private Tileset getFactory;
+		private IController controller;
 		private DAOMap DAO = new DAOMap(DBConnection.getInstance().getConnection());
 		private int ID = 1;
 
@@ -47,6 +48,14 @@ import entity.*;
 
 		public Observable getObservable() {
 			return this;
+		}
+
+		private IController getController() {
+			return this.controller;
+		}
+
+		private void setController(final IController controller) {
+			this.controller = controller;
 		}
 
 		public void move(ControllerOrder order) {
@@ -105,8 +114,14 @@ import entity.*;
 							this.map.get(i).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
 						}
 						if ((this.map.get(i + 1).getFactory().getDestructibility())) {
-							this.map.get(i + 1).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
-						}
+							if (this.map.get(i + 1).getFactory().getName().equals("player")) {
+									System.out.println(this.getController().getIsGameOver());
+									this.getController().setIsGameOver(true);
+								}
+								else if(this.map.get(i + 1).getFactory().getName().equals("monster")){
+									this.map.get(i + 1).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
+								}
+							}
 						if ((this.map.get(i + 2).getFactory().getDestructibility())) {
 							this.map.get(i + 2).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
 						}
@@ -139,6 +154,8 @@ import entity.*;
 
 			}
 		}
+
+
 
 
 		public void monsterOrder() {
@@ -186,7 +203,7 @@ import entity.*;
 			}
 		}
 
-		public void slip() throws InterruptedException {
+		public void slip() {
 			for (int i = 0; i < this.map.size(); i++) {
 				if (this.map.get(i).getFactory().getName().equals("rock") || this.map.get(i).getFactory().getName().equals("diamond")) {
 					if ((this.map.get(i + 1).getFactory().getFallingReaction() == FallingReaction.SLIPPERY)) {
@@ -194,7 +211,7 @@ import entity.*;
 							this.map.get(i - 22).setFactory(this.map.get(i).getFactory());
 							this.map.get(i).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 
-						} else if(((this.map.get(i + 22).getFactory().getFallingReaction() == FallingReaction.TRAVERSABLE)) && ((this.map.get(i + 23).getFactory().getFallingReaction() == FallingReaction.TRAVERSABLE))){
+						} else if (((this.map.get(i + 22).getFactory().getFallingReaction() == FallingReaction.TRAVERSABLE)) && ((this.map.get(i + 23).getFactory().getFallingReaction() == FallingReaction.TRAVERSABLE))) {
 							this.map.get(i + 22).setFactory(this.map.get(i).getFactory());
 							this.map.get(i).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 						}
@@ -202,4 +219,15 @@ import entity.*;
 				}
 			}
 		}
+
+		/*public void death() {
+			for (int i = 0; i < this.map.size(); i++) {
+				if (this.map.get(i).getFactory().getName().equals("player")) {
+					if ((this.map.get(i).getFactory().getFallingReaction() == FallingReaction.DEAD)) {
+						System.out.println("mort");
+						this.getController().gameOver();
+					}
+				}
+			}
+		}*/
 	}

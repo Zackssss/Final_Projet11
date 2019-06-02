@@ -15,4 +15,10 @@ public interface IController {
 	 *          the controller order
 	 */
 	void orderPerform(ControllerOrder controllerOrder);
+
+	boolean getIsGameOver();
+
+	void setIsGameOver(boolean isGameOver);
+
+
 }

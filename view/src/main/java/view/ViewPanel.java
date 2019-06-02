@@ -94,4 +94,6 @@ class ViewPanel extends JPanel implements Observer {
 	private ViewFrame getViewFrame() {
 		return this.viewFrame;
 	}
+
+
 }
