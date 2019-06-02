@@ -36,7 +36,7 @@ class DAOMap{
 					tileset = new Tileset(new Border("border", false, false, false, false, FallingReaction.BLOCKING),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
 					break;
 				case "diamond":
-					tileset = new Tileset(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
+					tileset = new Tileset(new Diamond("diamond", false, true, true, false, FallingReaction.SLIPPERY),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
 					break;
 				case "exit":
 					tileset = new Tileset(new Exit("exit", false, false,	false, false, FallingReaction.BLOCKING),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
@@ -80,6 +80,19 @@ class DAOMap{
 		resultSet.first();
 		result[0] = resultSet.getInt("Height");
 		result[1] = resultSet.getInt("Width");
+
+		return result;
+	}
+	public int getInfos(int ID) throws SQLException {
+		int result;
+
+		final String sql = "{call GetInfos(" + ID + ")}";
+		final CallableStatement call = this.getConnection().prepareCall(sql);
+		call.execute();
+		final ResultSet resultSet = call.getResultSet();
+
+		resultSet.first();
+		result = resultSet.getInt("nb_diamond");
 
 		return result;
 	}

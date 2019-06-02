@@ -16,8 +16,6 @@ public interface IController {
 	 */
 	void orderPerform(ControllerOrder controllerOrder);
 
-	boolean getIsGameOver();
-
 	void setIsGameOver(boolean isGameOver);
 
 
