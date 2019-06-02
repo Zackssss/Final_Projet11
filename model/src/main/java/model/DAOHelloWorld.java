@@ -54,7 +54,7 @@ class DAOMap{
 					tileset = new Tileset(new Player("player", false, false, true, true, FallingReaction.ALIVE),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
 					break;
 				case "rock":
-					tileset = new Tileset(new Rock("rock", false, false, true, false, FallingReaction.BLOCKING),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
+					tileset = new Tileset(new Rock("rock", false, false, true, false, FallingReaction.SLIPPERY),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
 					break;
 				case "wall":
 					tileset = new Tileset(new Wall("wall", false, false, true, false, FallingReaction.BLOCKING),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
