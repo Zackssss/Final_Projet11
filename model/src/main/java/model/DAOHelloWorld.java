@@ -42,7 +42,7 @@ class DAOMap{
 					tileset = new Tileset(new Exit("exit", false, false,	false, false, FallingReaction.BLOCKING),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
 					break;
 				case "ground":
-					tileset = new Tileset(new Ground("ground", false, false, true,true, FallingReaction.TRAVERSABLE),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
+					tileset = new Tileset(new Ground("ground", false, false, true,true, FallingReaction.BLOCKING),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
 					break;
 				case "monster":
 					tileset = new Tileset(new Monster("monster", false, false, true, true, FallingReaction.ALIVE),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));

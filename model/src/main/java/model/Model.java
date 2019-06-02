@@ -94,18 +94,28 @@ public final class Model extends Observable implements IModel {
 
 
 	}
-	/**
+
 	public void isFalling() {
 		int index = 0;
 		for (int i = 0; i < this.map.size(); i++) {
+			System.out.println("blabla");
 			if (this.map.get(i).getFactory().getName().equals("rock") || this.map.get(i).getFactory().getName().equals("diamond")) {
 				index = i;
-			}
-			if (this.map.get(index + 1).getFactory().getPermeability() == FallingReaction.PENETRABLE) {
+				System.out.println("un calloux");
+				if (this.map.get(index + 1).getFactory().getFallingReaction() == FallingReaction.TRAVERSABLE) {
+					System.out.println("un calloux2");
+					this.map.get(i).getFactory().setState(true);
+					this.map.get(index + 1).setFactory(this.map.get(index).getFactory());
+					this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 
+					}
+				}
+				else;{
+					this.map.get(i).getFactory().setState(false);
+				}
 			}
 
 		}
-	}*/
-}
+	}
+
 

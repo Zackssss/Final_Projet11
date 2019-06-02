@@ -33,6 +33,8 @@ public final class Controller implements IController {
 
 	public void play() {
 		this.gameLoop();
+
+
 		this.viewSystem.printMessage("Game Over !");
 		this.viewSystem.closeAll();
 	}
@@ -45,6 +47,9 @@ public final class Controller implements IController {
 			catch (final InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
+			this.getModel().isFalling();
+
+
 		}
 	}
 
@@ -81,9 +86,6 @@ public final class Controller implements IController {
 	private void clearStackOrder(){
 		this.stackOrder = Order.NOP;
 	}
-
-
-
 
 	@Override
 	public void orderPerform(ControllerOrder controllerOrder) {
