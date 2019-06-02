@@ -16,6 +16,7 @@ import entity.*;
 		private Tileset getFactory;
 		private DAOMap DAO = new DAOMap(DBConnection.getInstance().getConnection());
 		private int ID = 1;
+		private int diamondLeft = this.getInfos();
 
 		/**
 		 * Instantiates a new model.
@@ -24,6 +25,10 @@ import entity.*;
 			this.map = DAO.getMapSql(ID);
 		}
 
+		public int getInfos() throws SQLException{
+			int result = DAO.getInfos(this.ID);
+			return result;
+		}
 		public void setID(int inte) {
 			this.ID = inte;
 		}
@@ -36,6 +41,8 @@ import entity.*;
 			int[] result = DAO.getMapSize(this.ID);
 			return result;
 		}
+
+
 
 		public ArrayList<entity.Tileset> getMap() {
 			return this.map;
@@ -63,11 +70,24 @@ import entity.*;
 						this.map.get(index - 1).setFactory(this.map.get(index).getFactory());
 						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 					}
+					else if (!this.map.get(index - 1).getFactory().getState() && this.map.get(index - 1).getFactory().getCollectibility()){
+
+						this.map.get(index - 1).setFactory(this.map.get(index).getFactory());
+						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
+						this.diamondLeft -= 1;
+					}
+
 					break;
 				case DOWN:
 					if (this.map.get(index + 1).getFactory().getPermeability()) {
 						this.map.get(index + 1).setFactory(this.map.get(index).getFactory());
 						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
+					}
+					else if (!this.map.get(index + 1).getFactory().getState() && this.map.get(index - 1).getFactory().getCollectibility()){
+
+						this.map.get(index + 1).setFactory(this.map.get(index).getFactory());
+						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
+						this.diamondLeft -= 1;
 					}
 					break;
 				case LEFT:
@@ -75,9 +95,30 @@ import entity.*;
 						this.map.get(index - 22).setFactory(this.map.get(index).getFactory());
 						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 					}
+					else if (!this.map.get(index - 22).getFactory().getState() && this.map.get(index - 22).getFactory().getCollectibility()){
+
+						this.map.get(index - 22).setFactory(this.map.get(index).getFactory());
+						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
+						this.diamondLeft -= 1;
+					}
+					else if(this.map.get(index - 22).getFactory().getName().equals("rock") && (this.map.get(index - 44).getFactory().getName().equals("nothing"))){
+						this.map.get(index - 44).setFactory(this.map.get(index-22).getFactory());
+						this.map.get(index - 22).setFactory(this.map.get(index).getFactory());
+						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
+					}
 					break;
 				case RIGHT:
 					if (this.map.get(index + 22).getFactory().getPermeability()) {
+						this.map.get(index + 22).setFactory(this.map.get(index).getFactory());
+						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
+					}
+					else if (!this.map.get(index + 22).getFactory().getState() && this.map.get(index + 22).getFactory().getCollectibility()){
+						this.map.get(index + 22).setFactory(this.map.get(index).getFactory());
+						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
+						this.diamondLeft -= 1;
+					}
+					else if(this.map.get(index + 22).getFactory().getName().equals("rock") && (this.map.get(index + 44).getFactory().getName().equals("nothing"))){
+						this.map.get(index + 44).setFactory(this.map.get(index+22).getFactory());
 						this.map.get(index + 22).setFactory(this.map.get(index).getFactory());
 						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 					}
@@ -186,7 +227,7 @@ import entity.*;
 			}
 		}
 
-		public void slip() throws InterruptedException {
+		public void slip() {
 			for (int i = 0; i < this.map.size(); i++) {
 				if (this.map.get(i).getFactory().getName().equals("rock") || this.map.get(i).getFactory().getName().equals("diamond")) {
 					if ((this.map.get(i + 1).getFactory().getFallingReaction() == FallingReaction.SLIPPERY)) {
