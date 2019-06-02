@@ -11,12 +11,9 @@ import entity.*;
 
 
 		private ArrayList<entity.Tileset> map;
-		private Tileset getY;
-		private Tileset getX;
-		private Tileset getFactory;
 		private IController controller;
 		private DAOMap DAO = new DAOMap(DBConnection.getInstance().getConnection());
-		private int ID = 1;
+		private int ID = 4;
 		private int diamondLeft = this.getInfos();
 
 		/**
@@ -154,15 +151,14 @@ import entity.*;
 						if ((this.map.get(i).getFactory().getDestructibility())) {
 							this.map.get(i).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
 						}
-						if ((this.map.get(i + 1).getFactory().getDestructibility())) {
 							if (this.map.get(i + 1).getFactory().getName().equals("player")) {
-									System.out.println(this.getController().getIsGameOver());
-									this.getController().setIsGameOver(true);
+
+									System.exit(1);
 								}
-								else if(this.map.get(i + 1).getFactory().getName().equals("monster")){
+							if(this.map.get(i + 1).getFactory().getName().equals("monster")){
 									this.map.get(i + 1).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
+
 								}
-							}
 						if ((this.map.get(i + 2).getFactory().getDestructibility())) {
 							this.map.get(i + 2).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
 						}

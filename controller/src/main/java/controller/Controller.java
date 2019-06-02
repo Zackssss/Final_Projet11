@@ -19,7 +19,6 @@ public final class Controller implements IController {
 	public Controller(final IView view, final IModel model){
 		this.setView(view);
 		this.setModel(model);
-		this.setIsGameOver(isGameOver);
 		this.clearStackOrder();
 	}
 
