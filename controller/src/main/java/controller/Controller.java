@@ -31,7 +31,7 @@ public final class Controller implements IController {
 
 		}
 
-	public void play() {
+	public void play() throws InterruptedException {
 		this.gameLoop();
 
 
@@ -39,7 +39,7 @@ public final class Controller implements IController {
 		this.viewSystem.closeAll();
 	}
 
-	private void gameLoop(){
+	private void gameLoop() throws InterruptedException {
 		while (!this.isGameOver){
 			try {
 				Thread.sleep(TIME_SLEEP);
@@ -48,6 +48,8 @@ public final class Controller implements IController {
 				Thread.currentThread().interrupt();
 			}
 			this.getModel().isFalling();
+			this.getModel().monsterOrder();
+			Thread.sleep(300);
 
 
 		}
@@ -90,9 +92,7 @@ public final class Controller implements IController {
 	@Override
 	public void orderPerform(ControllerOrder controllerOrder) {
 		if (controllerOrder != null){
-			System.out.println("order 1");
 			this.getModel().move(controllerOrder);
-			System.out.println("ordre 2");
 		}
 	}
 

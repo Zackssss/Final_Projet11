@@ -12,6 +12,7 @@ public interface IModel{
 
     void move(ControllerOrder order);
     void isFalling();
+    void monsterOrder();
 
     void setID(int inte);
 
