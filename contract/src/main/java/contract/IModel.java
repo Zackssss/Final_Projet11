@@ -13,7 +13,7 @@ public interface IModel{
     void move(ControllerOrder order);
     void isFalling();
     void monsterOrder();
-    void explose();
+    void slip() throws InterruptedException;
 
     void setID(int inte);
 
