@@ -60,30 +60,27 @@ public final class Model extends Observable implements IModel {
 		}
 		switch (order) {
 			case UP:
-				System.out.println("UP");
-				System.out.println(this.map.get(index - 1).getFactory().getPermeability());
-				if (this.map.get(index - 1).getFactory().getPermeability() != Permeability.BLOCKING) {
+				if (this.map.get(index - 1).getFactory().getPermeability()) {
 					this.map.get(index - 1).setFactory(this.map.get(index).getFactory());
-					this.map.get(index).setFactory(new Nothing("nothing", true, Permeability.PENETRABLE));
-					System.out.println("déplacement");
+					this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 				}
 				break;
 			case DOWN:
-				if (this.map.get(index + 1).getFactory().getPermeability() != Permeability.BLOCKING) {
+				if (this.map.get(index + 1).getFactory().getPermeability()) {
 					this.map.get(index + 1).setFactory(this.map.get(index).getFactory());
-					this.map.get(index).setFactory(new Nothing("nothing", true, Permeability.PENETRABLE));
+					this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 				}
 				break;
 			case LEFT:
-				if (this.map.get(index - 22).getFactory().getPermeability() != Permeability.BLOCKING) {
+				if (this.map.get(index - 22).getFactory().getPermeability()) {
 					this.map.get(index - 22).setFactory(this.map.get(index).getFactory());
-					this.map.get(index).setFactory(new Nothing("nothing", true, Permeability.PENETRABLE));
+					this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 				}
 				break;
 			case RIGHT:
-				if (this.map.get(index + 22).getFactory().getPermeability() != Permeability.BLOCKING) {
+				if (this.map.get(index + 22).getFactory().getPermeability()) {
 					this.map.get(index + 22).setFactory(this.map.get(index).getFactory());
-					this.map.get(index).setFactory(new Nothing("nothing", true, Permeability.PENETRABLE));
+					this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 				}
 				break;
 			case STAND:
@@ -97,17 +94,28 @@ public final class Model extends Observable implements IModel {
 
 
 	}
+
 	public void isFalling() {
 		int index = 0;
 		for (int i = 0; i < this.map.size(); i++) {
+			System.out.println("blabla");
 			if (this.map.get(i).getFactory().getName().equals("rock") || this.map.get(i).getFactory().getName().equals("diamond")) {
 				index = i;
-			}
-			if (this.map.get(index + 1).getFactory().getPermeability() == Permeability.PENETRABLE) {
+				System.out.println("un calloux");
+				if (this.map.get(index + 1).getFactory().getFallingReaction() == FallingReaction.TRAVERSABLE) {
+					System.out.println("un calloux2");
+					this.map.get(i).getFactory().setState(true);
+					this.map.get(index + 1).setFactory(this.map.get(index).getFactory());
+					this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 
+					}
+				}
+				else;{
+					this.map.get(i).getFactory().setState(false);
+				}
 			}
 
 		}
 	}
-}
+
 

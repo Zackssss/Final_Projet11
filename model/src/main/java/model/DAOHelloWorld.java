@@ -33,31 +33,31 @@ class DAOMap{
 
 			switch (resultSet.getString("maps_integrate.nom_materiau")){
 				case "border":
-					tileset = new Tileset(new Border("border", normal, Permeability.BLOCKING),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
+					tileset = new Tileset(new Border("border", false, false, false, false, FallingReaction.BLOCKING),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
 					break;
 				case "diamond":
-					tileset = new Tileset(new Diamond("diamond", true, Permeability.COLLECTABLE),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
+					tileset = new Tileset(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
 					break;
 				case "exit":
-					tileset = new Tileset(new Exit("exit", true, Permeability.BLOCKING),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
+					tileset = new Tileset(new Exit("exit", false, false,	false, false, FallingReaction.BLOCKING),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
 					break;
 				case "ground":
-					tileset = new Tileset(new Ground("ground", true, Permeability.PENETRABLE),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
+					tileset = new Tileset(new Ground("ground", false, false, true,true, FallingReaction.BLOCKING),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
 					break;
 				case "monster":
-					tileset = new Tileset(new Monster("monster", true, Permeability.PENETRABLE),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
+					tileset = new Tileset(new Monster("monster", false, false, true, true, FallingReaction.ALIVE),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
 					break;
 				case "nothing":
-					tileset = new Tileset(new Nothing("nothing", true, Permeability.PENETRABLE),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
+					tileset = new Tileset(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
 					break;
 				case "player":
-					tileset = new Tileset(new Player("player", true, Permeability.PENETRABLE),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
+					tileset = new Tileset(new Player("player", false, false, true, true, FallingReaction.ALIVE),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
 					break;
 				case "rock":
-					tileset = new Tileset(new Rock("rock", true, Permeability.BLOCKING),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
+					tileset = new Tileset(new Rock("rock", false, false, true, false, FallingReaction.BLOCKING),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
 					break;
 				case "wall":
-					tileset = new Tileset(new Wall("wall", true, Permeability.BLOCKING),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
+					tileset = new Tileset(new Wall("wall", false, false, true, false, FallingReaction.BLOCKING),  resultSet.getInt("maps_integrate.X"),resultSet.getInt("maps_integrate.Y"));
 					break;
 					default:
 						break;

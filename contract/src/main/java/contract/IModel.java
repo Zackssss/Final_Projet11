@@ -11,6 +11,7 @@ import java.util.Observable;
 public interface IModel{
 
     void move(ControllerOrder order);
+    void isFalling();
 
     void setID(int inte);
 

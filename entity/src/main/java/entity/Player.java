@@ -2,7 +2,7 @@ package entity;
 
 public class Player extends Factory {
 
-    public Player(String name, String state, Permeability permeability){
-        super(name, state, permeability);
+    public Player(final String name, final Boolean state, final Boolean collectibility, final Boolean destructibility, final Boolean permeability, final FallingReaction reaction){
+        super(name, state, collectibility, destructibility, permeability, reaction);
     }
 }

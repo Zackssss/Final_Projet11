@@ -1,9 +1,9 @@
 package entity;
-
+/*
 public class Explosion extends Factory{
 
-    public Explosion(String name, String state, Permeability permeability){
-        super(name, state, Permeability.BLOCKING);
+    public Explosion(String name, String state, FallingReaction permeability){
+        super(name, state, FallingReaction.BLOCKING);
     }
 }
-
+*/

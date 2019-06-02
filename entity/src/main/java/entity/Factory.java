@@ -1,17 +1,23 @@
 package entity;
 
-import javax.swing.plaf.nimbus.State;
-
 public abstract class Factory {
 
     private String name;
-    private String state;
-    private Permeability permeability;
+    private Boolean state;
+    private Boolean collectibility;
+    private Boolean destructibility;
+    private Boolean permeability;
 
-    public Factory(final String name, final String state, final Permeability permeability) {
+    private FallingReaction reaction;
+
+    public Factory(final String name, final Boolean state, final Boolean collectibility, final Boolean destructibility, final Boolean permeability, final FallingReaction reaction) {
         this.setName(name);
         this.setState(state);
+        this.setCollectibility(collectibility);
+        this.setDestructibility(destructibility);
         this.setPermeability(permeability);
+        this.setFallingReaction(reaction);
+
     }
 
     public String getName() {return this.name;}
@@ -20,17 +26,43 @@ public abstract class Factory {
         this.name = (name);
     }
 
-    public String getState() {return this.state;}
+    public Boolean getState() {return this.state;}
 
-    public void setState(final String state){
+    public void setState(final Boolean state){
         this.state = (state);
     }
 
-    public Permeability getPermeability() {return this.permeability;}
+    public FallingReaction getFallingReaction() {
+        return this.reaction;
+    }
     
-    public void setPermeability(final Permeability permeability){
-        this.permeability = (permeability);
+    public void setFallingReaction(final FallingReaction reaction){
+        this.reaction = (reaction);
 
+    }
+
+    public Boolean getCollectibility() {
+        return collectibility;
+    }
+
+    public void setCollectibility(Boolean collectibility) {
+        this.collectibility = collectibility;
+    }
+
+    public Boolean getDestructibility() {
+        return destructibility;
+    }
+
+    public void setDestructibility(Boolean destructibility) {
+        this.destructibility = destructibility;
+    }
+
+    public Boolean getPermeability() {
+        return permeability;
+    }
+
+    public void setPermeability(Boolean permeability) {
+        this.permeability = permeability;
     }
 }
 
