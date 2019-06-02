@@ -26,11 +26,12 @@ public abstract class Factory {
         this.name = (name);
     }
 
-    public Boolean getState(boolean b) {return this.state;}
+    public Boolean getState() {
+        return state;
+    }
 
-    public Boolean setState(final Boolean state){
-        this.state = (state);
-        return false;
+    public void setState(Boolean state) {
+        this.state = state;
     }
 
     public FallingReaction getFallingReaction() {
@@ -65,6 +66,7 @@ public abstract class Factory {
     public void setPermeability(Boolean permeability) {
         this.permeability = permeability;
     }
+
 }
 
 
