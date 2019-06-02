@@ -5,6 +5,7 @@ public enum FallingReaction {
     BLOCKING,
     SLIPPERY,
     ALIVE,
-    TRAVERSABLE
+    TRAVERSABLE,
+    DEAD,
 
 }

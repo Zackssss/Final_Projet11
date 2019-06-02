@@ -3,16 +3,12 @@ package controller;
 import contract.*;
 
 
-import java.util.ArrayList;
-
-
-
 /**
  * The Class Controller.
  */
 public final class Controller implements IController {
 
-	private boolean isGameOver  = false;
+	private boolean isGameOver;
 	private IView viewSystem;
 	private static int TIME_SLEEP = 30;
 	private Order stackOrder;
@@ -20,10 +16,10 @@ public final class Controller implements IController {
 	private IView view;
 
 
-
 	public Controller(final IView view, final IModel model){
 		this.setView(view);
 		this.setModel(model);
+		this.setIsGameOver(isGameOver);
 		this.clearStackOrder();
 	}
 
@@ -46,6 +42,7 @@ public final class Controller implements IController {
 				Thread.currentThread().interrupt();
 			}
 
+			//this.getModel().death();//
 			this.getModel().isFalling();
 			Thread.sleep(300);
 			this.getModel().slip();
@@ -54,8 +51,16 @@ public final class Controller implements IController {
 			Thread.sleep(300);
 
 
-
 		}
+		System.out.println("mort3");
+	}
+
+	public boolean getIsGameOver() {
+		return isGameOver;
+	}
+
+	public void setIsGameOver(boolean isGameOver) {
+		this.isGameOver = isGameOver;
 	}
 
 	public void setViewSystem(final IView viewSystem) {
@@ -98,6 +103,7 @@ public final class Controller implements IController {
 			this.getModel().move(controllerOrder);
 		}
 	}
+
 
 
 }
