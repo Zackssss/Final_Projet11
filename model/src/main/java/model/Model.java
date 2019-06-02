@@ -15,7 +15,7 @@ public final class Model extends Observable implements IModel {
 	private Tileset getX;
 	private Tileset getFactory;
 	private DAOMap DAO = new DAOMap(DBConnection.getInstance().getConnection());
-	private int ID = 5;
+	private int ID = 1;
 
 	/**
 	 * Instantiates a new model.
@@ -99,8 +99,19 @@ public final class Model extends Observable implements IModel {
 					this.map.get(i).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 
 				}
-			else if (this.map.get(i).getFactory().getState() && ((this.map.get(i + 1).getFactory().getFallingReaction() == FallingReaction.ALIVE))) {
-				this.map.get(i).getFactory().setState(true);
+			else if (((this.map.get(i).getFactory().getState())) && ((this.map.get(i + 1).getFactory().getFallingReaction() == FallingReaction.ALIVE))){
+					System.out.println("BOUM");
+					//this.map.get(i + 1).setFactory(this.map.get(i).getFactory());//
+					this.map.get(i ).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
+					this.map.get(i + 1).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
+					this.map.get(i + 2).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
+					this.map.get(i + 22).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
+					this.map.get(i - 21).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
+					this.map.get(i - 20).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
+					this.map.get(i + 23).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
+					this.map.get(i - 22).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
+					this.map.get(i + 24).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
+				}
 
 			} else ;
 
@@ -111,7 +122,8 @@ public final class Model extends Observable implements IModel {
 
 			}
 		}
-	}
+
+
 
 	public void monsterOrder(){
 		int place = 0;
@@ -133,7 +145,6 @@ public final class Model extends Observable implements IModel {
 						if (this.map.get(place + 1).getFactory().getName().equals("nothing")) {
 							this.map.get(place + 1).setFactory(this.map.get(place).getFactory());
 							this.map.get(place).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
-							System.out.println("1");
 
 						}
 						break;
@@ -142,14 +153,12 @@ public final class Model extends Observable implements IModel {
 						if (this.map.get(place - 22).getFactory().getName().equals("nothing")) {
 							this.map.get(place - 22).setFactory(this.map.get(place).getFactory());
 							this.map.get(place).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
-							System.out.println("2");
 						}
 						break;
 					case 3:
 						if (this.map.get(place + 22).getFactory().getName().equals("nothing")) {
 							this.map.get(place + 22).setFactory(this.map.get(place).getFactory());
 							this.map.get(place).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
-							System.out.println("3");
 						}
 						break;
 					default:
@@ -161,25 +170,4 @@ public final class Model extends Observable implements IModel {
 		}
 	}
 
-
-	public void explose(){
-		for (int i = 0; i < this.map.size(); i++) {
-			if (this.map.get(i).getFactory().getName().equals("rock") || this.map.get(i).getFactory().getName().equals("diamond")) {
-				if (((this.map.get(i).getFactory().getState())) && ((this.map.get(i + 1).getFactory().getFallingReaction() == FallingReaction.ALIVE))){
-					System.out.println("BOUM");
-					//this.map.get(i + 1).setFactory(this.map.get(i).getFactory());//
-					this.map.get(i + 1).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
-					this.map.get(i + 2).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
-					this.map.get(i + 3).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
-					this.map.get(i + 23).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
-					this.map.get(i - 21).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
-					this.map.get(i - 20).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
-					this.map.get(i + 24).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
-					this.map.get(i - 19).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
-					this.map.get(i + 25).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
-				}
-
-			}
-		}
-	}
 }

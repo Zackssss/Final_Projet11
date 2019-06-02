@@ -64,7 +64,7 @@ class ViewPanel extends JPanel implements Observer {
 		BufferedImage imageTemp = null;
 
 		try {
-			imageTemp = ImageIO.read(new File("C:\\Users\\zacbo\\Documents\\JAVA\\RemakeProjetJava\\sprites\\" + "background.png"));
+			imageTemp = ImageIO.read(new File("C:\\Users\\HUGO\\Desktop\\Final_Projet11\\sprites\\" + "background.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -77,9 +77,9 @@ class ViewPanel extends JPanel implements Observer {
 				if (DrawMap.get(i).getFactory().equals("nothing")) {
 					imageTemp = null;
 				} else if (DrawMap.get(i).getFactory().equals("player") || DrawMap.get(i).getFactory().equals("monster")) {
-					imageTemp = ImageIO.read(new File("C:\\Users\\zacbo\\Documents\\JAVA\\RemakeProjetJava\\sprites\\" + DrawMap.get(i).getFactory().getName() + ".png"));
+					imageTemp = ImageIO.read(new File("C:\\Users\\HUGO\\Desktop\\Final_Projet11\\sprites\\" + DrawMap.get(i).getFactory().getName() + ".png"));
 				} else {
-					imageTemp = ImageIO.read(new File("C:\\Users\\zacbo\\Documents\\JAVA\\RemakeProjetJava\\sprites\\" + DrawMap.get(i).getFactory().getName() + ".png"));
+					imageTemp = ImageIO.read(new File("C:\\Users\\HUGO\\Desktop\\Final_Projet11\\sprites\\" + DrawMap.get(i).getFactory().getName() + ".png"));
 				}
 
 			} catch (IOException e) {

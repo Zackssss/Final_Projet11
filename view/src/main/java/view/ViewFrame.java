@@ -134,7 +134,6 @@ class ViewFrame extends JFrame implements KeyListener {
 		} catch (InterruptedException ex) {
 			ex.printStackTrace();
 		}
-		System.out.println("touche vue");
 	}
 
 
