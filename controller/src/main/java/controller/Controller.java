@@ -21,6 +21,7 @@ public final class Controller implements IController {
 		this.setModel(model);
 		this.setIsGameOver(isGameOver);
 		this.clearStackOrder();
+
 	}
 
 	public void orderPerform(final IUserOrder userOrder){
@@ -44,11 +45,13 @@ public final class Controller implements IController {
 
 			//this.getModel().death();//
 			this.getModel().isFalling();
+			this.getModel().explode();
 			Thread.sleep(300);
 			this.getModel().slip();
 			Thread.sleep(300);
 			this.getModel().monsterOrder();
 			Thread.sleep(300);
+
 
 
 		}

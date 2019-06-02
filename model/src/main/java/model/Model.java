@@ -155,10 +155,7 @@ import entity.*;
 			}
 		}
 
-
-
-
-		public void monsterOrder() {
+		public void monsterOrder(){
 			int place = 0;
 			int aleamove;
 			for (int i = 0; i < this.map.size(); i++) {
