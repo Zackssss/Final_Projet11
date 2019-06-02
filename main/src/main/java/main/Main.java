@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 public abstract class Main {
 
-    public static void main(final String[] args) throws IOException, SQLException {
+    public static void main(final String[] args) throws IOException, SQLException, InterruptedException {
 
         final Model model = new Model();
         final View view = new View(model);

@@ -11,7 +11,8 @@ import java.util.Observable;
 public interface IModel{
 
     void move(ControllerOrder order);
-    void isFalling();
+    void isFalling() throws InterruptedException;
+    void monsterOrder() throws InterruptedException;
 
     void setID(int inte);
 

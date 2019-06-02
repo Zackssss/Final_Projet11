@@ -30,7 +30,7 @@ public final class View implements IView, Runnable {
 	 *          the key code
 	 * @return the controller order
 	 */
-	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) {
+	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) throws InterruptedException {
 		switch (keyCode) {
 			case KeyEvent.VK_UP:
 				return ControllerOrder.UP;

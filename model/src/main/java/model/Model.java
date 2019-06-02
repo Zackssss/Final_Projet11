@@ -15,7 +15,7 @@ public final class Model extends Observable implements IModel {
 	private Tileset getX;
 	private Tileset getFactory;
 	private DAOMap DAO = new DAOMap(DBConnection.getInstance().getConnection());
-	private int ID = 1;
+	private int ID = 4;
 
 
 	/**
@@ -90,10 +90,6 @@ public final class Model extends Observable implements IModel {
 		}
 	}
 
-	public void isNormal(){
-
-
-	}
 
 	public void isFalling() {
 		int index = 0;
@@ -108,14 +104,60 @@ public final class Model extends Observable implements IModel {
 					this.map.get(index + 1).setFactory(this.map.get(index).getFactory());
 					this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 
-					}
-				}
-				else;{
+				} else ;
+				{
 					this.map.get(i).getFactory().setState(false);
+
 				}
 			}
-
 		}
 	}
+
+	public void monsterOrder() {
+		int index = 0;
+		int aleamove;
+		for (int i = 0; i < this.map.size(); i++) {
+			if (this.map.get(i).getFactory().getName().equals("monster")) {
+				index = i;
+				aleamove = (int) (Math.random() * 4);
+
+
+				switch (aleamove) {
+					case 0:
+						if (this.map.get(index - 1).getFactory().getPermeability()) {
+							this.map.get(index - 1).setFactory(this.map.get(index).getFactory());
+							this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
+							System.out.println("0");
+						}
+						break;
+					case 1:
+						if (this.map.get(index + 1).getFactory().getPermeability()) {
+							this.map.get(index + 1).setFactory(this.map.get(index).getFactory());
+							this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
+							System.out.println("1");
+
+						}
+						break;
+					case 2:
+						if (this.map.get(index - 22).getFactory().getPermeability()) {
+							this.map.get(index - 22).setFactory(this.map.get(index).getFactory());
+							this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
+							System.out.println("2");
+						}
+						break;
+					case 3:
+						if (this.map.get(index + 22).getFactory().getPermeability()) {
+							this.map.get(index + 22).setFactory(this.map.get(index).getFactory());
+							this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
+							System.out.println("3");
+						}
+						break;
+					default:
+						break;
+				}
+			}
+		}
+	}
+}
 
 
