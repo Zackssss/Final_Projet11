@@ -165,9 +165,10 @@ public final class Model extends Observable implements IModel {
 	public void explose(){
 		for (int i = 0; i < this.map.size(); i++) {
 			if (this.map.get(i).getFactory().getName().equals("rock") || this.map.get(i).getFactory().getName().equals("diamond")) {
-				if (((this.map.get(i).getFactory().getState())) && ((this.map.get(i + 1).getFactory().getFallingReaction() == FallingReaction.ALIVE))){
+				if (((!this.map.get(i).getFactory().getState())) && ((this.map.get(i + 1).getFactory().getFallingReaction() == FallingReaction.ALIVE))){
 					System.out.println("BOUM");
 					//this.map.get(i + 1).setFactory(this.map.get(i).getFactory());//
+					if(!this.map.get(i + 1).getFactory().getDestructibility())
 					this.map.get(i + 1).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
 					this.map.get(i + 2).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
 					this.map.get(i + 3).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
