@@ -6,7 +6,10 @@ import contract.*;
 /**
  * The Class Controller.
  *
- * @author plbaillet
+ * Makes the loop permitting the game to play,
+ *
+ *
+ * @author plbaillet && Zachary Morello && Hugo Bouillon
  */
 public final class Controller implements IController {
 
@@ -15,6 +18,7 @@ public final class Controller implements IController {
 	private boolean isGameOver;
 
 	/** The TIME_SLEEP. */
+
 	private static int TIME_SLEEP = 30;
 
 	/** The model. */
@@ -32,7 +36,6 @@ public final class Controller implements IController {
 	 * 			the model
 	 * @param view
 	 * 			the view
-	 * Controller's Constructor
 	 */
 	public Controller(final IView view, final IModel model){
 		this.setView(view);
@@ -47,7 +50,7 @@ public final class Controller implements IController {
 
 
 	/**
-	 * Runs the gameLoop until the game is over.
+	 * Runs the gameLoop until the game is over (calls all functionalities from the model).
 	 *
 	 * @throws InterruptedException
 	 * 						the InterruptedException
@@ -68,49 +71,57 @@ public final class Controller implements IController {
 			Thread.sleep(500);
 			this.getModel().monsterOrder();
 			Thread.sleep(300);
-
-
-
 		}
-		System.out.println("mort3");
 	}
 
 	/**
-	 * getModel
-	 * returns the model
+	 * Gets the model.
+	 *
+	 * @return the model
 	 */
+
 	private IModel getModel(){
 		return this.model;
 	}
 
 	/**
+	 * Sets the Model.
+	 *
 	 * @param model
-	 * setModel defined the model
+	 * 			the model
+	 *
 	 */
+
 	private void setModel(final IModel model){
 		this.model = model;
 	}
 
 	/**
-	 * getView returns the view
+	 * Gets the view.
+	 *
+	 * @return the view
 	 */
+
 	private IView getView(){
 		return this.view;
 	}
 
 	/**
+	 * Sets the view
 	 * @param view
-	 * setView defined the view
+	 *			the view
 	 */
 	private void setView (final IView view) {
 		this.view = view;
 	}
 
-
 	/**
+	 * Orderperform checks the controllerOrder, whenever a controllerOrder is received, it calls the move method associated.
+	 *
 	 * @param controllerOrder
-	 * orderPerform test the controllerOrder to send an information to the method move
+	 * 				the controllerOrder
 	 */
+
 	@Override
 	public void orderPerform(ControllerOrder controllerOrder) {
 		if (controllerOrder != null){

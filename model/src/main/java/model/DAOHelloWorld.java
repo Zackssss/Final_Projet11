@@ -10,7 +10,9 @@ import entity.*;
 /**
  * The Class DAOMap.
  *
- * @author Zachary Morello && Hugo Bouillon
+ * Permits the lecture and the use of data from the database.
+ *
+ * @author Zachary Morello && Hugo Bouillon && Jean-Baptiste Schmitt
  *
  */
 
@@ -44,7 +46,9 @@ class DAOMap{
 	}
 
 	/**
-	 * Gets the Map's Sql.
+	 * Gets the Map's Sql,
+	 * Creates an ArrayList stocking the map,
+	 * The case affects the block read from the database and instantiates an object of it.
 	 *
 	 * @param ID
 	 * 			the ID
@@ -106,7 +110,8 @@ class DAOMap{
 	}
 
 	/**
-	 * Gets the Map's size.
+	 * Gets the Map's size,
+	 * Puts it in the result.
 	 *
 	 * @param ID
 	 * 			the ID
@@ -133,11 +138,13 @@ class DAOMap{
 	}
 
 	/**
-	 * Gets the infos.
+	 * Gets the infos(the number of diamonds).
 	 *
 	 * @param ID
 	 * 			the ID
+	 *
 	 * @return the result
+	 * 				the number of diamonds needed to win
 	 *
 	 * @throws SQLException
 	 * 					the SQLException

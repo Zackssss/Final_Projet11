@@ -13,6 +13,8 @@ import entity.*;
 	/**
  	* The Class Model.
 	 *
+	 * Creates the functionalities of the game.
+	 *
  	* @author Zachary Morello && Hugo Bouillon
  	*/
 
@@ -41,19 +43,19 @@ import entity.*;
 		 * Instantiates a new model.
 		 *
 		 *@throws SQLException
-		 * 	         the SQL exception
+		 * 	         the SQLException
 		 */
 		public Model() throws SQLException {
 			this.map = DAO.getMapSql(ID);
 		}
 
 		/**
-		 * Gets the infos.
+		 * Gets the infos (the number of diamonds).
 		 *
-		 * @return the infos
+		 * @return the result
 		 *
 		 * @throws SQLException
-		 * 					the SQl exception
+		 * 					the SQlException
 		 */
 
 		public int getInfos() throws SQLException{
@@ -62,7 +64,7 @@ import entity.*;
 		}
 
 		/**
-		 * Sets the ID.
+		 * Sets the ID(of the map).
 		 *
 		 * @param inte
 		 * 			the inte
@@ -72,7 +74,7 @@ import entity.*;
 		}
 
 		/**
-		 * Gets the ID.
+		 * Gets the ID(of the map).
 		 *
 		 * @return the ID
 		 */
@@ -82,7 +84,7 @@ import entity.*;
 		}
 
 		/**
-		 * Gets the size.
+		 * Gets the size(of the map).
 		 *
 		 * @return the size
 		 *
@@ -96,7 +98,7 @@ import entity.*;
 		}
 
 		/**
-		 * Gets the map.
+		 * Gets the map(in an ArrayList).
 		 *
 		 * @return the map
 		 */
@@ -106,7 +108,7 @@ import entity.*;
 		}
 
 		/**
-		 * Sets the map.
+		 * Sets the map(in an ArrayList).
 		 *
 		 * @param ID
 		 *			the ID
@@ -150,7 +152,10 @@ import entity.*;
 		}
 
 		/**
-		 * Moves the player entity
+		 * Moves the factory object named "player".
+		 * First it looks for the player object,
+		 * Then it checks the object, the player wants to move onto.
+		 * According to this object nature, either dig, collect, push or die.
 		 *
 		 * @param order
 		 * 			the order
@@ -240,9 +245,10 @@ import entity.*;
 		}
 
 		/**
-		 * Falls the Rock and Diamond,
-		 *
-		 * Crushes the Alive's entities.
+		 * Applicable to rocks or diamonds, checks if the object below them is "nothing".
+		 * If it is, puts the rocks or diamonds State on true.
+		 * Then if the below object is Alive and the rocks or diamonds State is on true.
+		 * Either explode it into diamonds or close the game (if the player is dead).
 		 */
 
 		public void isFalling() {
@@ -300,9 +306,13 @@ import entity.*;
 		}
 
 		/**
-		 * Moves the monster entity,
+		 * Moves the factory object named "monster".
 		 *
-		 * Kills the player at proximity.
+		 * First it looks for the monster object,
+		 * Then it checks the object, the monster wants to move onto.
+		 * According to this object nature, if it's nothing, moves onto it.
+		 * If it's a player, makes it dead.
+		 * The monster's movement are random.
 		 */
 
 		public void monsterOrder() {
@@ -363,7 +373,14 @@ import entity.*;
 			}
 		}
 
-		/** Slips the falling entities. */
+		/**
+		 * Applicable to rocks or diamonds, checks if they are on another rock or diamond.
+		 * Checks the left and the bottom-left object.
+		 * If they are "nothing", move the rock (or the diamond) on the left.
+		 * If either of them is something else, checks the right and bottom-right object,
+		 * If they are "nothing", move the rock (or the diamond) on the right.
+		 * Else do nothing.
+		 */
 
 		public void slip() {
 			for (int i = 0; i < this.map.size(); i++) {
@@ -383,8 +400,8 @@ import entity.*;
 		}
 
 		/**
-		 * Kills the player,
-		 *
+		 * Checks if the player is dead,
+		 * If it is :
 		 * Prints a "Game Over" message,
 		 *
 		 * Closes the window.
@@ -406,9 +423,10 @@ import entity.*;
 		}
 
 		/**
-		 * Wins the game,
-		 *
-		 * Shows a "Game Over" message,
+		 * Checks if the player collected enough diamonds.
+		 * If he has, enables the exit.
+		 * If the player is an object next to the exit :
+		 * Shows a "Game Won" message,
 		 *
 		 * Closes the window.
 		 *
@@ -421,7 +439,7 @@ import entity.*;
 					if (this.map.get(i).getFactory().getName().equals("exit")) {
 						System.out.println("You got all the diamond you needed to win ! Head to the exit !");
 						if ((this.map.get(i + 1).getFactory().getName().equals("player")) || (this.map.get(i - 1).getFactory().getName().equals("player")) || (this.map.get(i + 22).getFactory().getName().equals("player")) || (this.map.get(i - 22).getFactory().getName().equals("player"))){
-							System.out.println("Bravo ! You won !");
+							System.out.println("Bravo ! You won ! You collected " + this.diamondCollected + " / " + this.diamondLeft);
 							Thread.sleep(2000);
 							System.exit(1);
 						}
