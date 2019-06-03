@@ -43,7 +43,10 @@ public final class Controller implements IController {
 	}
 
 
-	/** Plays gameLoop. */
+	/** Plays gameLoop.
+	 * @throws InterruptedException
+	 * 				the InterruptedException
+	 */
 	public void play() throws InterruptedException {
 		this.gameLoop();
 	}

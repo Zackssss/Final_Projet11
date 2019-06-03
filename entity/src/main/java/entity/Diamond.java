@@ -5,7 +5,7 @@ package entity;
  *
  * Defines diamonds parameters
  *
- * @author Zachary Morello && Hugo Bouillon
+ * @author Zachary Morello &amp;&amp; Hugo Bouillon
  */
 
 public class Diamond extends Factory{

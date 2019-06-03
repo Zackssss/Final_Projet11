@@ -42,6 +42,8 @@ public final class View implements IView, Runnable {
 	 * @param keyCode
 	 *          the key code
 	 * @return the controller order
+	 * @throws InterruptedException
+	 * 					the InterruptedException
 	 */
 
 	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) throws InterruptedException {
