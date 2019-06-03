@@ -44,7 +44,7 @@ class DAOMap{
 	}
 
 	/**
-	 * Gets the Map's Sql
+	 * Gets the Map's Sql.
 	 *
 	 * @param ID
 	 * 			the ID
@@ -106,7 +106,7 @@ class DAOMap{
 	}
 
 	/**
-	 * Gets the Map's size
+	 * Gets the Map's size.
 	 *
 	 * @param ID
 	 * 			the ID
@@ -133,14 +133,13 @@ class DAOMap{
 	}
 
 	/**
-	 * Gets the infos
+	 * Gets the infos.
 	 *
 	 * @param ID
 	 * 			the ID
 	 * @return the result
 	 *
 	 * @throws SQLException
-	 *
 	 * 					the SQLException
 	 */
 	public int getInfos(int ID) throws SQLException {

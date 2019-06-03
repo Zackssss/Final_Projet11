@@ -5,21 +5,33 @@ import contract.*;
 
 /**
  * The Class Controller.
+ *
  * @author plbaillet
  */
 public final class Controller implements IController {
-	/**
-	 *
-	 */
+
+	/** The GameOver. */
+
 	private boolean isGameOver;
-	private IView viewSystem;
+
+	/** The TIME_SLEEP. */
 	private static int TIME_SLEEP = 30;
+
+	/** The model. */
+
 	private IModel model;
+
+	/** The view. */
+
 	private IView view;
 
 	/**
+	 * Instantiates a new controller.
+	 *
 	 * @param model
+	 * 			the model
 	 * @param view
+	 * 			the view
 	 * Controller's Constructor
 	 */
 	public Controller(final IView view, final IModel model){
@@ -28,17 +40,18 @@ public final class Controller implements IController {
 	}
 
 
-	/**
-	 *
-	 * play starts the game and launch gameLoop first
-	 */
+	/** Plays gameLoop. */
 	public void play() throws InterruptedException {
 		this.gameLoop();
 	}
 
 
 	/**
-	 * 	gameLoop run different methods if the player is still alive, if not, there is the Game Over
+	 * Runs the gameLoop until the game is over.
+	 *
+	 * @throws InterruptedException
+	 * 						the InterruptedException
+	 *
 	 */
 	private void gameLoop() throws InterruptedException {
 		while (!this.isGameOver){
@@ -62,28 +75,9 @@ public final class Controller implements IController {
 		System.out.println("mort3");
 	}
 
-
 	/**
-	 * @param isGameOver
-	 * setIsGameOver defined when the game turned over
-	 */
-	public void setIsGameOver(boolean isGameOver) {
-		this.isGameOver = isGameOver;
-	}
-
-
-
-	/**
-	 * @param viewSystem
-	 * setViewSystem defined the viewSystem
-	 */
-	public void setViewSystem(final IView viewSystem) {
-		this.viewSystem = viewSystem;
-	}
-
-
-	/**
-	 * getModel returns the model
+	 * getModel
+	 * returns the model
 	 */
 	private IModel getModel(){
 		return this.model;
@@ -103,7 +97,6 @@ public final class Controller implements IController {
 	private IView getView(){
 		return this.view;
 	}
-
 
 	/**
 	 * @param view

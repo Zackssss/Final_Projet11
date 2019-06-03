@@ -20,19 +20,18 @@ class ViewFrame extends JFrame implements KeyListener {
 	private IController controller;
 
 	// The Constant serialVersionUID. //
-	private static final long    serialVersionUID    = -697358409737458175L;
+	private static final long serialVersionUID = -697358409737458175L;
 
 	/**
 	 * Instantiates a new view frame.
 	 *
-	 * @param model
-	 *          the model
-	 * @throws HeadlessException
-	 *           the headless exception
+	 * @param model the model
+	 * @throws HeadlessException the headless exception
 	 */
 	public ViewFrame(final IModel model) throws HeadlessException, IOException {
 		this.buildViewFrame(model);
 	}
+
 	/* Instantiates a new view frame.
 	 *
 	 * @param model
@@ -97,6 +96,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	protected IModel getModel() {
 		return this.model;
 	}
+
 	/* Sets the model.
 	 *
 	 * @param model
@@ -111,13 +111,13 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @param model
 	 *          the model
 	 */
-	private void buildViewFrame(final IModel model){
+	private void buildViewFrame(final IModel model) {
 		this.setModel(model);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.addKeyListener(this);
 		this.setContentPane(new ViewPanel(this));
-		this.setSize(1280 + this.getInsets().left + this.getInsets().right,  730+ this.getInsets().top + this.getInsets().bottom);
+		this.setSize(1280 + this.getInsets().left + this.getInsets().right, 730 + this.getInsets().top + this.getInsets().bottom);
 		this.setLocationRelativeTo(null);
 	}
 
@@ -136,12 +136,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	}
 
 
-
 	public void keyReleased(final KeyEvent e) {
 
-	}
-
-	public void printMessage(String message) {
-		JOptionPane.showMessageDialog(null, message);
 	}
 }
