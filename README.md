@@ -15,8 +15,7 @@ To continue, you will have to open the project as a Maven project, and go inside
 
 After that, you can run the program via the main. Whenever you want to change the map, you will have to change a parameter in : 
 model -> src -> main -> model -> Model 
-The parameter to change is : /** The ID. */
-		                       private int ID = 1;
+The parameter to change is : private int ID = 1;
                            
 There are 5 maps runnable, juste change the 1 into a number from 1 to 5 !
 
