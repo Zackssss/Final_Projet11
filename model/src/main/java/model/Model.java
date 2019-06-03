@@ -13,7 +13,7 @@ import entity.*;
 		private ArrayList<entity.Tileset> map;
 		private IController controller;
 		private DAOMap DAO = new DAOMap(DBConnection.getInstance().getConnection());
-		private int ID = 1;
+		private int ID = 4;
 		private int diamondLeft = this.getInfos();
 		private int diamondCollected =0;
 
