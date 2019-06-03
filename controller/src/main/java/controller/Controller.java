@@ -11,7 +11,6 @@ public final class Controller implements IController {
 	private boolean isGameOver;
 	private IView viewSystem;
 	private static int TIME_SLEEP = 30;
-	private Order stackOrder;
 	private IModel model;
 	private IView view;
 
@@ -19,7 +18,6 @@ public final class Controller implements IController {
 	public Controller(final IView view, final IModel model){
 		this.setView(view);
 		this.setModel(model);
-		this.clearStackOrder();
 	}
 
 
@@ -81,18 +79,6 @@ public final class Controller implements IController {
 		this.view = view;
 	}
 
-	private Order getStackOrder(){
-		return this.stackOrder;
-	}
-
-
-	private void setStackOrder(final Order stackOrder) {
-		this.stackOrder = stackOrder;
-	}
-
-	private void clearStackOrder(){
-		this.stackOrder = Order.NOP;
-	}
 
 	@Override
 	public void orderPerform(ControllerOrder controllerOrder) {
