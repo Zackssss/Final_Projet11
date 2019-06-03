@@ -15,6 +15,7 @@ public interface IModel{
     void isFalling();
     void monsterOrder();
     void slip() throws InterruptedException;
+    void win() throws InterruptedException;
 
     void setID(int inte);
 
