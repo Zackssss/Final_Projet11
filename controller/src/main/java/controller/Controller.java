@@ -44,7 +44,6 @@ public final class Controller implements IController {
 
 			//this.getModel().death();//
 			this.getModel().isFalling();
-			this.getModel().explode();
 			Thread.sleep(300);
 			this.getModel().slip();
 			Thread.sleep(300);

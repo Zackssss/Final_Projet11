@@ -89,7 +89,7 @@ import entity.*;
 						this.map.get(index + 1).setFactory(this.map.get(index).getFactory());
 						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 					}
-					else if (!this.map.get(index + 1).getFactory().getState() && this.map.get(index - 1).getFactory().getCollectibility()){
+					else if (!this.map.get(index + 1).getFactory().getState() && this.map.get(index + 1).getFactory().getCollectibility()){
 
 						this.map.get(index + 1).setFactory(this.map.get(index).getFactory());
 						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
