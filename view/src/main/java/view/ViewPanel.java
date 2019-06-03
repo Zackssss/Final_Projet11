@@ -11,20 +11,28 @@ import java.io.IOException;
 
 import javax.swing.JPanel;
 
+/**
+ * The Class ViewPanel.
+ *
+ * Draws inside the graphic interface.
+ *
+ * @author Zachary Morello && Hugo Bouillon
+ */
 
 class ViewPanel extends JPanel implements Observer {
 
-	/* The view frame.
-	 */
+	/** The view frame */
+
 	private ViewFrame viewFrame;
-	/* The Constant serialVersionUID.
-	 */
+	/** The Constant serialVersionUID. */
+
 	private static final long serialVersionUID = -998294702363713521L;
 
-	/* Instantiates a new view panel.
+	/** Instantiates a new view panel.
 	 *
 	 * @param viewFrame the view frame
 	 */
+
 	public ViewPanel(final ViewFrame viewFrame) {
 		this.setViewFrame(viewFrame);
 		viewFrame.getModel().getObservable().addObserver(this);
@@ -41,6 +49,13 @@ class ViewPanel extends JPanel implements Observer {
 		return this.viewFrame;
 	}
 
+	/**
+	 * Sets the view frame.
+	 *
+	 * @param viewFrame
+	 *          the new view frame
+	 */
+
 	private void setViewFrame(final ViewFrame viewFrame) {
 		this.viewFrame = viewFrame;
 	}
@@ -55,6 +70,8 @@ class ViewPanel extends JPanel implements Observer {
 	}
 	/*
 	 * (non-Javadoc)
+	 *
+	 * Paints the graphic interface.
 	 *
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
@@ -79,7 +96,5 @@ class ViewPanel extends JPanel implements Observer {
 		this.repaint();
 
 	}
-
-
 
 }

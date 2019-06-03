@@ -10,107 +10,81 @@ import javax.swing.*;
 
 import contract.IController;
 
+/**
+ * The Class ViewFrame.
+ *
+ * Creates the graphic interface and catches the key pressure.
+ *
+ * @author Zachary Morello && Hugo Bouillon
+ */
 
 class ViewFrame extends JFrame implements KeyListener {
 
-	// The model. //
+	/** The model. */
 	private IModel model;
 
-	// The controller. //
+	/** The controller. */
 	private IController controller;
 
-	// The Constant serialVersionUID. //
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -697358409737458175L;
 
 	/**
-	 * Instantiates a new view frame.
+	 * Instantiates a new ViewFrame.
 	 *
 	 * @param model the model
 	 * @throws HeadlessException the headless exception
+	 * @throws IOException
+	 * 					the IOException
 	 */
 	public ViewFrame(final IModel model) throws HeadlessException, IOException {
 		this.buildViewFrame(model);
 	}
 
-	/* Instantiates a new view frame.
-	 *
-	 * @param model
-	 *          the model
-	 * @param gc
-	 *          the gc
-	 */
-	public ViewFrame(final IModel model, final GraphicsConfiguration gc) throws IOException {
-		super(gc);
-		this.buildViewFrame(model);
-	}
-
-	/* Instantiates a new view frame.
-	 *
-	 * @param model
-	 *          the model
-	 * @param title
-	 *          the title
-	 * @throws HeadlessException
-	 *           the headless exception
-	 */
-	public ViewFrame(final IModel model, final String title) throws HeadlessException, IOException {
-		super(title);
-		this.buildViewFrame(model);
-	}
-
-	/* Instantiates a new view frame.
-	 *
-	 * @param model
-	 *          the model
-	 * @param title
-	 *          the title
-	 * @param gc
-	 *          the gc
-	 */
-	public ViewFrame(final IModel model, final String title, final GraphicsConfiguration gc) throws IOException {
-		super(title, gc);
-		this.buildViewFrame(model);
-	}
-
-	/* Gets the controller.
+	/** Gets the controller.
 	 *
 	 * @return the controller
 	 */
+
 	private IController getController() {
 		return this.controller;
 	}
 
-	/* Sets the controller.
+	/** Sets the controller.
 	 *
 	 * @param controller
 	 *          the new controller
 	 */
+
 	protected void setController(final IController controller) {
 		this.controller = controller;
 	}
 
-	/* Gets the model.
+	/** Gets the model.
 	 *
 	 * @return the model
 	 */
+
 	protected IModel getModel() {
 		return this.model;
 	}
 
-	/* Sets the model.
+	/** Sets the model.
 	 *
 	 * @param model
 	 *          the new model
 	 */
+
 	private void setModel(final IModel model) {
 		this.model = model;
 	}
 
-	/* Builds the view frame.
+	/** Builds the view frame.
 	 *
 	 * @param model
 	 *          the model
 	 */
+
 	private void buildViewFrame(final IModel model) {
 		this.setModel(model);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

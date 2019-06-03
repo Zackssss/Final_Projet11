@@ -12,8 +12,29 @@ import view.View;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * The Class Main.
+ *
+ * @author Zachary Morello && Hugo Bouillon
+ */
 
 public abstract class Main {
+
+    /**
+     * The main method.
+     *
+     * @param args
+     *            the arguments
+     *
+     * @throws IOException
+     *              the IOException
+     *
+     * @throws SQLException
+     *              the SQLException
+     *
+     * @throws InterruptedException
+     *              the InterruptedException
+     */
 
     public static void main(final String[] args) throws IOException, SQLException, InterruptedException {
 
