@@ -1,16 +1,18 @@
 package controller;
 
-import contract.*;
+import contract.IController;
+import contract.IModel;
+import contract.IView;
+import contract.ControllerOrder;
 
 
 /**
  * The Class Controller.
  */
 public final class Controller implements IController {
-	
-	private IView viewSystem;
+
+	private boolean isGameOver = false;
 	private static int TIME_SLEEP = 30;
-	private Order stackOrder;
 	private IModel model;
 	private IView view;
 
@@ -18,18 +20,11 @@ public final class Controller implements IController {
 	public Controller(final IView view, final IModel model){
 		this.setView(view);
 		this.setModel(model);
-		this.clearStackOrder();
 
 	}
 
-	public void orderPerform(final IUserOrder userOrder){
-
-		}
-
 	public void play() throws InterruptedException {
 		this.gameLoop();
-		this.viewSystem.printMessage("Game Over !");
-		this.viewSystem.closeAll();
 	}
 
 	private void gameLoop() throws InterruptedException {
@@ -57,18 +52,6 @@ public final class Controller implements IController {
 		System.out.println("mort3");
 	}
 
-	public boolean getIsGameOver() {
-		return isGameOver;
-	}
-
-	public void setIsGameOver(boolean isGameOver) {
-		this.isGameOver = isGameOver;
-	}
-
-	public void setViewSystem(final IView viewSystem) {
-		this.viewSystem = viewSystem;
-	}
-
 	private IModel getModel(){
 		return this.model;
 	}
@@ -77,35 +60,14 @@ public final class Controller implements IController {
 		this.model = model;
 	}
 
-	private IView getView(){
-		return this.view;
-	}
-
-
 	private void setView (final IView view) {
 		this.view = view;
 	}
 
-	private Order getStackOrder(){
-		return this.stackOrder;
-	}
-
-
-	private void setStackOrder(final Order stackOrder) {
-		this.stackOrder = stackOrder;
-	}
-
-	private void clearStackOrder(){
-		this.stackOrder = Order.NOP;
-	}
-
-	@Override
 	public void orderPerform(ControllerOrder controllerOrder) {
 		if (controllerOrder != null){
 			this.getModel().move(controllerOrder);
 		}
 	}
 
-
-
-}
+	}

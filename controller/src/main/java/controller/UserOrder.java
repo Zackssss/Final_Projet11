@@ -12,12 +12,12 @@ public class UserOrder implements IUserOrder {
         this.order = order;
     }
 
-    @Override
+
     public int getPlayer() {
         return this.player;
     }
 
-    @Override
+
     public ControllerOrder getOrder() {
         return this.order;
     }

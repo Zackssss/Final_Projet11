@@ -40,6 +40,11 @@ class ViewPanel extends JPanel implements Observer {
 	 *
 	 * @return the view frame
 	 */
+
+	private ViewFrame getViewFrame() {
+		return this.viewFrame;
+	}
+
 	private void setViewFrame(final ViewFrame viewFrame) {
 		this.viewFrame = viewFrame;
 	}
@@ -64,18 +69,10 @@ class ViewPanel extends JPanel implements Observer {
 		ArrayList<entity.Tileset> DrawMap = this.getViewFrame().getModel().getMap();
 		BufferedImage imageTemp = null;
 
-		try {
-			imageTemp = ImageIO.read(new File("C:\\Users\\HUGO\\Desktop\\Final_Projet11\\sprites\\" + "background.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		graphics.drawImage(imageTemp, 0, 0, 1408, 704, null);
-
-
 		for (int i = 0; i < DrawMap.size(); i++) {
 
 			try {
-					imageTemp = ImageIO.read(new File("C:\\Users\\HUGO\\Desktop\\Final_Projet11\\sprites\\" + DrawMap.get(i).getFactory().getName() + ".png"));
+					imageTemp = ImageIO.read(new File("C:\\Users\\mrsyl\\Desktop\\Final_Projet11\\sprites\\" + DrawMap.get(i).getFactory().getName() + ".png"));
 
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -86,9 +83,7 @@ class ViewPanel extends JPanel implements Observer {
 		this.repaint();
 
 	}
-	private ViewFrame getViewFrame() {
-		return this.viewFrame;
-	}
+
 
 
 }

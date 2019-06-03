@@ -45,31 +45,11 @@ public final class View implements IView, Runnable {
 		}
 	}
 
-	/* (non-Javadoc)
-	 *
-	 * @see contract.IView#printMessage(java.lang.String)
-	 */
-	public void printMessage(final String message) {
-		this.viewFrame.printMessage("Perdu");
-	}
-
-	/* (non-Javadoc)
-	 *
-	 * @see java.lang.Runnable#run()
-	 */
 	public void run() {
 		this.viewFrame.setVisible(true);
 	}
 
-	/* Sets the controller.
-	 *
-	 * @param controller
-	 *          the new controller
-	 */
 	public void setController(final IController controller) {
 		this.viewFrame.setController(controller);
-	}
-	public void closeAll() {
-		this.viewFrame.dispose();
 	}
 }

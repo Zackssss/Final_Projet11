@@ -3,7 +3,10 @@ package model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Observable;
-import contract.*;
+
+import contract.ControllerOrder;
+import contract.IController;
+import contract.IModel;
 import entity.*;
 
 
@@ -83,7 +86,6 @@ import entity.*;
 						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 						this.diamondCollected += 1;
 					}
-					System.out.println(this.diamondLeft);
 					break;
 				case DOWN:
 					if (this.map.get(index + 1).getFactory().getPermeability()) {
@@ -96,7 +98,6 @@ import entity.*;
 						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 						this.diamondCollected += 1;
 					}
-					System.out.println(this.diamondLeft);
 					break;
 				case LEFT:
 					if (this.map.get(index - 22).getFactory().getPermeability()) {
@@ -114,7 +115,6 @@ import entity.*;
 						this.map.get(index - 22).setFactory(this.map.get(index).getFactory());
 						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 					}
-					System.out.println(this.diamondLeft);
 					break;
 				case RIGHT:
 					if (this.map.get(index + 22).getFactory().getPermeability()) {
@@ -131,7 +131,6 @@ import entity.*;
 						this.map.get(index + 22).setFactory(this.map.get(index).getFactory());
 						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 					}
-					System.out.println(this.diamondLeft);
 					break;
 				case STAND:
 					break;
@@ -195,53 +194,55 @@ import entity.*;
 			}
 		}
 
-		public void monsterOrder(){
-			int place = 0;
+
+
+
+		public void monsterOrder() {
+
 			int aleamove;
 			for (int i = 0; i < this.map.size(); i++) {
 				if (this.map.get(i).getFactory().getName().equals("monster")) {
-					place = i;
 					aleamove = (int) (Math.random() * 4);
 					switch (aleamove) {
 						case 0:
-							if (this.map.get(place - 1).getFactory().getName().equals("nothing")) {
-								this.map.get(place - 1).setFactory(this.map.get(place).getFactory());
-								this.map.get(place).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
+							if (this.map.get(i - 1).getFactory().getName().equals("nothing")) {
+								this.map.get(i - 1).setFactory(this.map.get(i).getFactory());
+								this.map.get(i).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 							}
-							else if (this.map.get(place - 1).getFactory().getName().equals("player")) {
-								this.map.get(place - 1).getFactory().setFallingReaction(FallingReaction.DEAD);
+							else if (this.map.get(i - 1).getFactory().getName().equals("player")) {
+								this.map.get(i - 1).getFactory().setFallingReaction(FallingReaction.DEAD);
 
 							}
 							break;
 						case 1:
-							if (this.map.get(place + 1).getFactory().getName().equals("nothing")) {
-								this.map.get(place + 1).setFactory(this.map.get(place).getFactory());
-								this.map.get(place).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
+							if (this.map.get(i + 1).getFactory().getName().equals("nothing")) {
+								this.map.get(i + 1).setFactory(this.map.get(i).getFactory());
+								this.map.get(i).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 
 							}
-							else if (this.map.get(place + 1).getFactory().getName().equals("player")) {
-								this.map.get(place + 1).getFactory().setFallingReaction(FallingReaction.DEAD);
+							else if (this.map.get(i + 1).getFactory().getName().equals("player")) {
+								this.map.get(i + 1).getFactory().setFallingReaction(FallingReaction.DEAD);
 
 							}
 							break;
 
 						case 2:
-							if (this.map.get(place - 22).getFactory().getName().equals("nothing")) {
-								this.map.get(place - 22).setFactory(this.map.get(place).getFactory());
-								this.map.get(place).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
+							if (this.map.get(i - 22).getFactory().getName().equals("nothing")) {
+								this.map.get(i - 22).setFactory(this.map.get(i).getFactory());
+								this.map.get(i).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 							}
-							else if (this.map.get(place - 22).getFactory().getName().equals("player")) {
-								this.map.get(place - 22).getFactory().setFallingReaction(FallingReaction.DEAD);
+							else if (this.map.get(i - 22).getFactory().getName().equals("player")) {
+								this.map.get(i - 22).getFactory().setFallingReaction(FallingReaction.DEAD);
 
 							}
 							break;
 						case 3:
-							if (this.map.get(place + 22).getFactory().getName().equals("nothing")) {
-								this.map.get(place + 22).setFactory(this.map.get(place).getFactory());
-								this.map.get(place).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
+							if (this.map.get(i + 22).getFactory().getName().equals("nothing")) {
+								this.map.get(i + 22).setFactory(this.map.get(i).getFactory());
+								this.map.get(i).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 							}
-							else if (this.map.get(place + 22).getFactory().getName().equals("player")) {
-								this.map.get(place + 22).getFactory().setFallingReaction(FallingReaction.DEAD);
+							else if (this.map.get(i + 22).getFactory().getName().equals("player")) {
+								this.map.get(i + 22).getFactory().setFallingReaction(FallingReaction.DEAD);
 
 							}
 							break;
@@ -275,22 +276,20 @@ import entity.*;
 			for (int i = 0; i < this.map.size(); i++) {
 				if (this.map.get(i).getFactory().getName().equals("player")) {
 					if ((this.map.get(i).getFactory().getFallingReaction() == FallingReaction.DEAD)) {
-						System.out.println("Mort !");
+						System.out.println("That's unfortunate, you died ! :/");
 						Thread.sleep(2000);
 						System.exit(1);
-
 					}
 				}
 			}
 		}
 		public void win() throws InterruptedException{
-			if (this.diamondLeft > this.diamondCollected);{
-				System.out.println("1");
+			if (this.diamondLeft <= this.diamondCollected){
 				for (int i = 0; i < this.map.size(); i++) {
 					if (this.map.get(i).getFactory().getName().equals("exit")) {
-						System.out.println("2");
-						if ((this.map.get(i + 1).getFactory().getName().equals("player")) || (this.map.get(i - 1).getFactory().getName().equals("player")) || (this.map.get(i + 22).getFactory().getName().equals("player")) || (this.map.get(i - 22).getFactory().getName().equals("player")));{
-							System.out.println("Win !");
+						System.out.println("You got all the diamond you needed to win ! Head to the exit !");
+						if ((this.map.get(i + 1).getFactory().getName().equals("player")) || (this.map.get(i - 1).getFactory().getName().equals("player")) || (this.map.get(i + 22).getFactory().getName().equals("player")) || (this.map.get(i - 22).getFactory().getName().equals("player"))){
+							System.out.println("Bravo ! You won !");
 							Thread.sleep(2000);
 							System.exit(1);
 						}
