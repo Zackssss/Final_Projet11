@@ -3,8 +3,11 @@ package contract;
 /**
  * The Interface IController.
  *
- * @author Jean-Aymeric Diet
+ * Shows methods other package need from Controller
+ *
+ * @author Zachary Morello && Hugo Bouillon
  */
+
 public interface IController {
 
 
