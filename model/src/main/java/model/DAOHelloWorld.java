@@ -7,18 +7,53 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import entity.*;
 
+/**
+ * The Class DAOMap.
+ *
+ * @author Zachary Morello && Hugo Bouillon
+ *
+ */
+
 class DAOMap{
+
+	/** The connection. */
 
 	private Connection connection;
 
+	/**
+	 * Instantiates a new DAO map.
+	 *
+	 * @param connection
+	 *          the connection
+	 *
+	 * @throws SQLException
+	 *           the SQL exception
+	 */
 	public DAOMap(final Connection connection) throws SQLException {
 		this.connection = connection;
 	}
+
+	/**
+	 * Gets the connection.
+	 *
+	 * @return the connection
+	 */
 
 	protected Connection getConnection() {
 		return this.connection;
 	}
 
+	/**
+	 * Gets the Map's Sql
+	 *
+	 * @param ID
+	 * 			the ID
+	 *
+	 * @return the Map
+	 *
+	 * @throws SQLException
+	 * 					the SQLException
+	 */
 	public ArrayList<entity.Tileset> getMapSql(int ID) throws SQLException {
 
 		ArrayList<entity.Tileset> Map = new ArrayList<Tileset>();
@@ -70,6 +105,18 @@ class DAOMap{
 		return Map;
 	}
 
+	/**
+	 * Gets the Map's size
+	 *
+	 * @param ID
+	 * 			the ID
+	 *
+	 * @return the result
+	 *
+	 * @throws SQLException
+	 * 					the SQLException
+	 */
+
 	public int[] getMapSize(int ID) throws SQLException {
 		int[] result = new int[2];
 
@@ -84,6 +131,18 @@ class DAOMap{
 
 		return result;
 	}
+
+	/**
+	 * Gets the infos
+	 *
+	 * @param ID
+	 * 			the ID
+	 * @return the result
+	 *
+	 * @throws SQLException
+	 *
+	 * 					the SQLException
+	 */
 	public int getInfos(int ID) throws SQLException {
 		int result;
 

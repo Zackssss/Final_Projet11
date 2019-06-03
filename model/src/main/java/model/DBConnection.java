@@ -8,9 +8,12 @@ import java.sql.SQLException;
  * The Class DBConnection.
  *
  * @author Jean-Aymeric Diet
+ * (This part has not been touch by the team, so we won't steal the work of our beloved JAD)
  */
 final class DBConnection {
+
 	/** The instance. */
+
 	private static DBConnection	INSTANCE	= null;
 
 	/** The connection. */
@@ -28,6 +31,7 @@ final class DBConnection {
 	 *
 	 * @return single instance of DBConnection
 	 */
+
 	public static synchronized DBConnection getInstance() {
 		if (DBConnection.INSTANCE == null) {
 			DBConnection.INSTANCE = new DBConnection();
@@ -40,6 +44,7 @@ final class DBConnection {
 	 *
 	 * @return the boolean
 	 */
+
 	private boolean open() {
 		final DBProperties dbProperties = new DBProperties();
 		try {
