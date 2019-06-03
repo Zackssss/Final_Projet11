@@ -438,7 +438,7 @@ import entity.*;
 				for (int i = 0; i < this.map.size(); i++) {
 					if (this.map.get(i).getFactory().getName().equals("exit")) {
 						System.out.println("You got all the diamond you needed to win ! Head to the exit !");
-						if ((this.map.get(i + 1).getFactory().getName().equals("player")) || (this.map.get(i - 1).getFactory().getName().equals("player")) || (this.map.get(i + 22).getFactory().getName().equals("player")) || (this.map.get(i - 22).getFactory().getName().equals("player"))){
+						if ((this.map.get(i + 1).getFactory().getName().equals("player")) || (this.map.get(i - 1).getFactory().getName().equals("player")) || (this.map.get(i - 22).getFactory().getName().equals("player"))){
 							System.out.println("Bravo ! You won ! You collected " + this.diamondCollected + " / " + this.diamondLeft);
 							Thread.sleep(2000);
 							System.exit(1);

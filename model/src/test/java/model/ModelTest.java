@@ -6,37 +6,70 @@ import java.sql.SQLException;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * The TestClass ModelTest
+ *
+ * @author Team11
+ */
+
 public class ModelTest {
 
+    /** modelUndertest */
+
     private Model modelUnderTest;
+
+    /**
+     * This method runs before each test.
+     *
+     * @throws SQLException
+     *                  the SQlException
+     */
 
     @Before
     public void setUp() throws SQLException {
         modelUnderTest = new Model();
     }
 
+    /**
+     * Checks if the result of GetInfos is 10 as expected.
+     *
+     * @throws Exception
+     *              the Exception
+     */
+
     @Test
     public void testGetInfos() throws Exception {
-        // Setup
+        /* Setup */
         final int expectedResult = 10;
 
-        // Run the test
+        /* Run the test */
         final int result = modelUnderTest.getInfos();
 
-        // Verify the results
+        /* Verify the results */
         assertEquals(expectedResult, result);
     }
 
-
+    /**
+     * Test if getSize runs correctly.
+     *
+     * @throws Exception
+     *          the Exception
+     */
 
     @Test(expected = SQLException.class)
     public void testGetSize_ThrowsSQLException() throws Exception {
-        // Setup
+        /* Setup */
 
-        // Run the test
+        /* Run the test */
         modelUnderTest.getSize();
     }
 
+    /**
+     * Test if the setMap runs correctly.
+     *
+     * @throws Exception
+     *              the Exception
+     */
     @Test
     public void testSetMap() throws Exception {
         // Setup
@@ -48,8 +81,12 @@ public class ModelTest {
         // Verify the results
     }
 
-
-
+    /**
+     *  Test if isFalling runs correctly.
+     *
+     * @throws Exception
+     *              the Exception
+     */
 
     @Test
     public void testIsFalling() {
@@ -61,6 +98,13 @@ public class ModelTest {
         // Verify the results
     }
 
+    /**
+     * Test if monsterOrder runs correctly.
+     *
+     * @throws Exception
+     *              the Exception
+     */
+
     @Test
     public void testMonsterOrder() {
         // Setup
@@ -70,6 +114,13 @@ public class ModelTest {
 
         // Verify the results
     }
+
+    /**
+     * Test if slip runs correctly.
+     *
+     * @throws Exception
+     *              the Exception
+     */
 
     @Test
     public void testSlip() {
@@ -81,6 +132,13 @@ public class ModelTest {
         // Verify the results
     }
 
+    /**
+     * Test if death runs correctly.
+     *
+     * @throws Exception
+     *              the Exception
+     */
+
     @Test
     public void testDeath() throws Exception {
         // Setup
@@ -91,6 +149,12 @@ public class ModelTest {
         // Verify the results
     }
 
+    /**
+     * Test if death runs correctly.
+     *
+     * @throws Exception
+     *              the Exception
+     */
 
     @Test
     public void testWin() throws Exception {
