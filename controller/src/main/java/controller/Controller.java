@@ -7,8 +7,7 @@ import contract.*;
  * The Class Controller.
  */
 public final class Controller implements IController {
-
-	private boolean isGameOver;
+	
 	private IView viewSystem;
 	private static int TIME_SLEEP = 30;
 	private Order stackOrder;
@@ -49,6 +48,8 @@ public final class Controller implements IController {
 			Thread.sleep(300);
 			this.getModel().monsterOrder();
 			Thread.sleep(300);
+			this.getModel().death();
+			this.getModel().win();
 
 
 

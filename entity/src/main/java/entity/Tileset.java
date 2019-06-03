@@ -1,6 +1,6 @@
 package entity;
 
-public class Tileset extends Entity{
+public class Tileset{
 
     private Factory factory;
     private int x;
@@ -22,11 +22,6 @@ public class Tileset extends Entity{
 
     public int getX() { return this.x;}
 
-    public void setX() {
-
-    }
-
-
     public void setX(final int x) {
         this.x = (x);
     }
@@ -34,11 +29,6 @@ public class Tileset extends Entity{
     public int getY() {
         return this.y;
     }
-
-    public void setY() {
-
-    }
-
 
     public void setY(final int y) {
         this.y = (y);
