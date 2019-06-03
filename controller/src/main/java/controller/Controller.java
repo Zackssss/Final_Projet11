@@ -50,6 +50,7 @@ public final class Controller implements IController {
 			this.getModel().win();
 
 
+
 		}
 		System.out.println("mort3");
 	}
