@@ -1,7 +1,10 @@
 package controller;
 
 import org.junit.Before;
-
+/**
+ *@author jbschmitt
+ *@author plbaillet
+ */
 public class UserOrderTest {
 
     private UserOrder userOrderUnderTest;

@@ -4,7 +4,10 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
+/**
+*@author jbschmitt
+*@author plbaillet
+*/
 public class MainTest {
 
     @Test

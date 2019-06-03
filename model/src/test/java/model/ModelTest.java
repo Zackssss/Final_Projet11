@@ -5,11 +5,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.SQLException;
-import java.util.Observable;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-
+/**
+ *@author jbschmitt
+ *@author plbaillet
+ */
 public class ModelTest {
 
     private Model modelUnderTest;
@@ -94,6 +95,8 @@ public class ModelTest {
 
         // Verify the results
     }
+
+
 
 
     @Test
