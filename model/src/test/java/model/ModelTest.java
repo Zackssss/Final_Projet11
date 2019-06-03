@@ -84,8 +84,6 @@ public class ModelTest {
     /**
      *  Test if isFalling runs correctly.
      *
-     * @throws Exception
-     *              the Exception
      */
 
     @Test
@@ -101,8 +99,6 @@ public class ModelTest {
     /**
      * Test if monsterOrder runs correctly.
      *
-     * @throws Exception
-     *              the Exception
      */
 
     @Test
@@ -118,8 +114,6 @@ public class ModelTest {
     /**
      * Test if slip runs correctly.
      *
-     * @throws Exception
-     *              the Exception
      */
 
     @Test
