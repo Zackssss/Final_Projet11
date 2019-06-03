@@ -1,56 +1,105 @@
-/**
- * @author Jean-Aymeric DIET jadiet@cesi.fr
- * @version 1.0
- */
-/**
 package model;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
+import java.sql.SQLException;
+
+import static org.junit.Assert.assertEquals;
 
 public class ModelTest {
-    private Model model;
 
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-    }
+    private Model modelUnderTest;
 
     @Before
-    public void setUp() throws Exception {
-        this.model = new Model();
-    }
-
-    @After
-    public void tearDown() throws Exception {
+    public void setUp() throws SQLException {
+        modelUnderTest = new Model();
     }
 
     @Test
-    public void testGetMessage() {
-        Assert.assertEquals("", this.model.getHelloWorld().getMessage());
+    public void testGetInfos() throws Exception {
+        // Setup
+        final int expectedResult = 10;
+
+        // Run the test
+        final int result = modelUnderTest.getInfos();
+
+        // Verify the results
+        assertEquals(expectedResult, result);
     }
 
-    /**
-     * Test method for {@link model.Model#loadHelloWorld(java.lang.String)}.
-     */
-/**
-    @Test
-    public void testGetMessageString() {
-        this.model.loadHelloWorld("GB");
-        Assert.assertEquals("Hello world", this.model.getHelloWorld().getMessage());
-        this.model.loadHelloWorld("FR");
-        Assert.assertEquals("Bonjour le monde", this.model.getHelloWorld().getMessage());
-        this.model.loadHelloWorld("DE");
-        Assert.assertEquals("Hallo Welt", this.model.getHelloWorld().getMessage());
-        this.model.loadHelloWorld("ID");
-        Assert.assertEquals("Salamat pagi dunia", this.model.getHelloWorld().getMessage());
+
+
+    @Test(expected = SQLException.class)
+    public void testGetSize_ThrowsSQLException() throws Exception {
+        // Setup
+
+        // Run the test
+        modelUnderTest.getSize();
     }
+
+    @Test
+    public void testSetMap() throws Exception {
+        // Setup
+        final int ID = 0;
+
+        // Run the test
+        modelUnderTest.setMap(ID);
+
+        // Verify the results
+    }
+
+
+
+
+    @Test
+    public void testIsFalling() {
+        // Setup
+
+        // Run the test
+        modelUnderTest.isFalling();
+
+        // Verify the results
+    }
+
+    @Test
+    public void testMonsterOrder() {
+        // Setup
+
+        // Run the test
+        modelUnderTest.monsterOrder();
+
+        // Verify the results
+    }
+
+    @Test
+    public void testSlip() {
+        // Setup
+
+        // Run the test
+        modelUnderTest.slip();
+
+        // Verify the results
+    }
+
+    @Test
+    public void testDeath() throws Exception {
+        // Setup
+
+        // Run the test
+        modelUnderTest.death();
+
+        // Verify the results
+    }
+
+
+    @Test
+    public void testWin() throws Exception {
+        // Setup
+
+        // Run the test
+        modelUnderTest.win();
+
+        // Verify the results
+    }
+
 }
-*/

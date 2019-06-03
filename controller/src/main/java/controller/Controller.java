@@ -35,16 +35,13 @@ public final class Controller implements IController {
 			catch (final InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
-
-			//this.getModel().death();//
-			this.getModel().isFalling();
-			Thread.sleep(300);
-			this.getModel().slip();
-			Thread.sleep(300);
-			this.getModel().monsterOrder();
-			Thread.sleep(300);
 			this.getModel().death();
 			this.getModel().win();
+			this.getModel().isFalling();
+			this.getModel().slip();
+			Thread.sleep(500);
+			this.getModel().monsterOrder();
+			Thread.sleep(300);
 
 
 

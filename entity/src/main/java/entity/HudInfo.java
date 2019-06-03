@@ -1,5 +1,5 @@
 package entity;
-
+/**
 import java.util.Observable;
 
 public class HudInfo extends Observable {
@@ -68,4 +68,4 @@ public class HudInfo extends Observable {
         this.timer = 0;
     }
 
-}
+}*/

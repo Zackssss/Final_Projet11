@@ -1,9 +1,6 @@
 package view;
 
-import contract.*;
-
 import java.awt.*;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -14,7 +11,6 @@ import java.io.IOException;
 
 import javax.swing.JPanel;
 
-import static java.lang.Thread.sleep;
 
 class ViewPanel extends JPanel implements Observer {
 
@@ -29,7 +25,7 @@ class ViewPanel extends JPanel implements Observer {
 	 *
 	 * @param viewFrame the view frame
 	 */
-	public ViewPanel(final ViewFrame viewFrame) throws IOException {
+	public ViewPanel(final ViewFrame viewFrame) {
 		this.setViewFrame(viewFrame);
 		viewFrame.getModel().getObservable().addObserver(this);
 
