@@ -15,7 +15,7 @@ import contract.*;
  *
  * Takes care of the graphic interface and the Key detection.
  *
- * @author Zachary Morello && Hugo Bouillon
+ * @author Zachary Morello &amp;&amp; Hugo Bouillon
  *
  */
 public final class View implements IView, Runnable {

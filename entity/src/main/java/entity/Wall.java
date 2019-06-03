@@ -5,7 +5,7 @@ package entity;
  *
  * Defines walls parameters
  *
- * @author Zachary Morello && Hugo Bouillon
+ * @author Zachary Morello &amp;&amp; Hugo Bouillon
  */
 
 public class Wall extends Factory{

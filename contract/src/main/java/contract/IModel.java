@@ -8,7 +8,7 @@ import java.util.Observable;
  *
  * Shows methods other package need from Model
  *
- * @author Zachary Morello && Hugo Bouillon
+ * @author Zachary Morello &amp;&amp; Hugo Bouillon
  */
 
 public interface IModel{

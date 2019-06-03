@@ -5,7 +5,7 @@ package entity;
  *
  * Sets the Factory objects infos from the DAOs GetMAP stocked procedure
  *
- * @author Zachary Morello && Hugo Bouillon
+ * @author Zachary Morello &amp;&amp; Hugo Bouillon
  */
 
 public class Tileset{

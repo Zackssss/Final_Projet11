@@ -15,7 +15,7 @@ import java.sql.SQLException;
 /**
  * The Class Main.
  *
- * @author Zachary Morello && Hugo Bouillon
+ * @author Zachary Morello &amp;&amp; Hugo Bouillon
  */
 
 public abstract class Main {

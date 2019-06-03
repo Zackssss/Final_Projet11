@@ -5,7 +5,7 @@ package contract;
  *
  * Shows methods other package need from UserOrder
  *
- * @author Zachary Morello && Hugo Bouillon
+ * @author Zachary Morello &amp;&amp; Hugo Bouillon
  */
 
 public interface IUserOrder {

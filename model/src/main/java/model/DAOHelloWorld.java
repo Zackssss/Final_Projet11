@@ -12,7 +12,7 @@ import entity.*;
  *
  * Permits the lecture and the use of data from the database.
  *
- * @author Zachary Morello && Hugo Bouillon && Jean-Baptiste Schmitt
+ * @author Zachary Morello &amp;&amp; Hugo Bouillon &amp;&amp; Jean-Baptiste Schmitt
  *
  */
 

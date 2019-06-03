@@ -5,7 +5,7 @@ package entity;
  *
  * Permits the creation of Factory objects.
  *
- * @author Zachary Morello && Hugo Bouillon
+ * @author Zachary Morello &amp;&amp; Hugo Bouillon
  */
 
 public abstract class Factory {

@@ -15,7 +15,7 @@ import contract.IController;
  *
  * Creates the graphic interface and catches the key pressure.
  *
- * @author Zachary Morello && Hugo Bouillon
+ * @author Zachary Morello &amp;&amp; Hugo Bouillon
  */
 
 class ViewFrame extends JFrame implements KeyListener {

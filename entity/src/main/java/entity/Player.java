@@ -5,7 +5,7 @@ package entity;
  *
  * Defines players parameters
  *
- * @author Zachary Morello && Hugo Bouillon
+ * @author Zachary Morello &amp;&amp; Hugo Bouillon
  */
 
 public class Player extends Factory {

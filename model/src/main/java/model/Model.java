@@ -15,7 +15,7 @@ import entity.*;
 	 *
 	 * Creates the functionalities of the game.
 	 *
- 	* @author Zachary Morello && Hugo Bouillon
+ 	* @author Zachary Morello &amp;&amp; Hugo Bouillon
  	*/
 
 	public final class Model extends Observable implements IModel {
@@ -30,7 +30,7 @@ import entity.*;
 		private DAOMap DAO = new DAOMap(DBConnection.getInstance().getConnection());
 
 		/** The ID. */
-		private int ID = 3;
+		private int ID = 1;
 
 		/** The diamondLeft. */
 		private int diamondLeft = this.getInfos();

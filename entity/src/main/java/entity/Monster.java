@@ -5,7 +5,7 @@ package entity;
  *
  * Defines monsters parameters
  *
- * @author Zachary Morello && Hugo Bouillon
+ * @author Zachary Morello &amp;&amp; Hugo Bouillon
  */
 
 public class Monster extends Factory{
