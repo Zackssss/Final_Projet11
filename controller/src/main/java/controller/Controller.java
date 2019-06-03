@@ -22,9 +22,7 @@ public final class Controller implements IController {
 		this.clearStackOrder();
 	}
 
-	public void orderPerform(final IUserOrder userOrder){
 
-		}
 
 	public void play() throws InterruptedException {
 		this.gameLoop();
@@ -56,9 +54,6 @@ public final class Controller implements IController {
 		System.out.println("mort3");
 	}
 
-	public boolean getIsGameOver() {
-		return isGameOver;
-	}
 
 	public void setIsGameOver(boolean isGameOver) {
 		this.isGameOver = isGameOver;
