@@ -1,9 +1,6 @@
 package view;
 
-import contract.*;
-
 import java.awt.*;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -14,7 +11,6 @@ import java.io.IOException;
 
 import javax.swing.JPanel;
 
-import static java.lang.Thread.sleep;
 
 class ViewPanel extends JPanel implements Observer {
 
@@ -29,7 +25,7 @@ class ViewPanel extends JPanel implements Observer {
 	 *
 	 * @param viewFrame the view frame
 	 */
-	public ViewPanel(final ViewFrame viewFrame) throws IOException {
+	public ViewPanel(final ViewFrame viewFrame) {
 		this.setViewFrame(viewFrame);
 		viewFrame.getModel().getObservable().addObserver(this);
 
@@ -67,7 +63,7 @@ class ViewPanel extends JPanel implements Observer {
 		for (int i = 0; i < DrawMap.size(); i++) {
 
 			try {
-					imageTemp = ImageIO.read(new File("C:\\Users\\Jean-Bite\\IdeaProjects\\Final_Projet2\\sprites\\" + DrawMap.get(i).getFactory().getName() + ".png"));
+					imageTemp = ImageIO.read(new File("C:\\Users\\mrsyl\\Desktop\\Final_Projet11\\sprites\\" + DrawMap.get(i).getFactory().getName() + ".png"));
 
 			} catch (IOException e) {
 				e.printStackTrace();

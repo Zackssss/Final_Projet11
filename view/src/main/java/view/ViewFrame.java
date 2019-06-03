@@ -111,7 +111,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @param model
 	 *          the model
 	 */
-	private void buildViewFrame(final IModel model) throws IOException{
+	private void buildViewFrame(final IModel model){
 		this.setModel(model);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);

@@ -13,7 +13,7 @@ import entity.*;
 		private ArrayList<entity.Tileset> map;
 		private IController controller;
 		private DAOMap DAO = new DAOMap(DBConnection.getInstance().getConnection());
-		private int ID = 4;
+		private int ID = 5;
 		private int diamondLeft = this.getInfos();
 		private int diamondCollected =0;
 
@@ -77,11 +77,13 @@ import entity.*;
 						this.map.get(index - 1).setFactory(this.map.get(index).getFactory());
 						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 					}
-					else if (!this.map.get(index - 1).getFactory().getState() && this.map.get(index - 1).getFactory().getCollectibility()){
-
+					else if (!this.map.get(index - 1).getFactory().getState() && this.map.get(index - 1).getFactory().getCollectibility()) {
 						this.map.get(index - 1).setFactory(this.map.get(index).getFactory());
 						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 						this.diamondCollected += 1;
+					}
+					else if (this.map.get(index - 1).getFactory().getName().equals("monster")) {
+					this.map.get(index).getFactory().setFallingReaction(FallingReaction.DEAD);
 					}
 					break;
 				case DOWN:
@@ -94,6 +96,9 @@ import entity.*;
 						this.map.get(index + 1).setFactory(this.map.get(index).getFactory());
 						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 						this.diamondCollected += 1;
+					}
+					else if (this.map.get(index + 1).getFactory().getName().equals("monster")) {
+						this.map.get(index).getFactory().setFallingReaction(FallingReaction.DEAD);
 					}
 					break;
 				case LEFT:
@@ -112,6 +117,9 @@ import entity.*;
 						this.map.get(index - 22).setFactory(this.map.get(index).getFactory());
 						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 					}
+					else if (this.map.get(index - 22).getFactory().getName().equals("monster")) {
+						this.map.get(index).getFactory().setFallingReaction(FallingReaction.DEAD);
+					}
 					break;
 				case RIGHT:
 					if (this.map.get(index + 22).getFactory().getPermeability()) {
@@ -128,8 +136,9 @@ import entity.*;
 						this.map.get(index + 22).setFactory(this.map.get(index).getFactory());
 						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 					}
-					break;
-				case STAND:
+					else if (this.map.get(index + 22).getFactory().getName().equals("monster")) {
+						this.map.get(index).getFactory().setFallingReaction(FallingReaction.DEAD);
+					}
 					break;
 				default:
 					break;
@@ -151,13 +160,13 @@ import entity.*;
 						if ((this.map.get(i).getFactory().getDestructibility())) {
 							this.map.get(i).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
 						}
-							if (this.map.get(i + 1).getFactory().getName().equals("player")) {
-								this.map.get(i + 1).getFactory().setFallingReaction(FallingReaction.DEAD);
-								}
-							if(this.map.get(i + 1).getFactory().getName().equals("monster")){
-									this.map.get(i + 1).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
+						if (this.map.get(i + 1).getFactory().getName().equals("player")) {
+							this.map.get(i + 1).getFactory().setFallingReaction(FallingReaction.DEAD);
+						}
+						if (this.map.get(i + 1).getFactory().getName().equals("monster")) {
+							this.map.get(i + 1).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
 
-								}
+						}
 						if ((this.map.get(i + 2).getFactory().getDestructibility())) {
 							this.map.get(i + 2).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
 						}
@@ -181,16 +190,15 @@ import entity.*;
 						}
 					}
 
-				} else ;
+				} else {
 
-				{
+
 					this.map.get(i).getFactory().setState(false);
 
-				}
 
+				}
 			}
 		}
-
 
 
 
