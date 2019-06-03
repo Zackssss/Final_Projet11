@@ -89,7 +89,7 @@ import entity.*;
 						this.map.get(index + 1).setFactory(this.map.get(index).getFactory());
 						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 					}
-					else if (!this.map.get(index + 1).getFactory().getState() && this.map.get(index - 1).getFactory().getCollectibility()){
+					else if (!this.map.get(index + 1).getFactory().getState() && this.map.get(index + 1).getFactory().getCollectibility()){
 
 						this.map.get(index + 1).setFactory(this.map.get(index).getFactory());
 						this.map.get(index).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
@@ -146,14 +146,12 @@ import entity.*;
 						this.map.get(i).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
 
 					} else if (((this.map.get(i).getFactory().getState())) && ((this.map.get(i + 1).getFactory().getFallingReaction() == FallingReaction.ALIVE))) {
-						System.out.println("BOUM");
 						//this.map.get(i + 1).setFactory(this.map.get(i).getFactory());//
 						if ((this.map.get(i).getFactory().getDestructibility())) {
 							this.map.get(i).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
 						}
 							if (this.map.get(i + 1).getFactory().getName().equals("player")) {
-
-									System.exit(1);
+								this.map.get(i + 1).getFactory().setFallingReaction(FallingReaction.DEAD);
 								}
 							if(this.map.get(i + 1).getFactory().getName().equals("monster")){
 									this.map.get(i + 1).setFactory(new Diamond("diamond", false, true, true, true, FallingReaction.SLIPPERY));
@@ -207,7 +205,6 @@ import entity.*;
 							if (this.map.get(place - 1).getFactory().getName().equals("nothing")) {
 								this.map.get(place - 1).setFactory(this.map.get(place).getFactory());
 								this.map.get(place).setFactory(new Nothing("nothing", false, false, true, true, FallingReaction.TRAVERSABLE));
-								System.out.println("0");
 
 							}
 							break;
@@ -257,14 +254,16 @@ import entity.*;
 			}
 		}
 
-		/*public void death() {
+		public void death() throws InterruptedException {
 			for (int i = 0; i < this.map.size(); i++) {
 				if (this.map.get(i).getFactory().getName().equals("player")) {
 					if ((this.map.get(i).getFactory().getFallingReaction() == FallingReaction.DEAD)) {
-						System.out.println("mort");
-						this.getController().gameOver();
+						System.out.println("Mort !");
+						Thread.sleep(2000);
+						System.exit(1);
+
 					}
 				}
 			}
-		}*/
+		}
 	}

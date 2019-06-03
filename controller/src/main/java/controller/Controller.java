@@ -48,6 +48,7 @@ public final class Controller implements IController {
 			Thread.sleep(300);
 			this.getModel().monsterOrder();
 			Thread.sleep(300);
+			this.getModel().death();
 
 
 		}
